@@ -5,7 +5,7 @@ import lombok.Data;
 
 /**
  * @ClassName HappyCodeForm
- * @Description TODO
+ * @Description 生成请求参数
  * @Author lanlanhappy
  * @Date 2020/12/27 12:36 下午
  */
