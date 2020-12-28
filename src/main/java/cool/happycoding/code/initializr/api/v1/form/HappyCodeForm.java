@@ -16,6 +16,6 @@ public class HappyCodeForm extends Form {
     private String happyCodeVersion;
     private ProjectMetadata projectMetadata;
     private Dependency[] dependencies;
-
+    private Database database;
 
 }
