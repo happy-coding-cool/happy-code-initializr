@@ -6,5 +6,5 @@ package cool.happycoding.code.initializr.base;
  * @Author lanlanhappy
  * @Date 2020/12/30 8:18 下午
  */
-public class GenerationConfiguration {
+public interface GenerationConfiguration {
 }
