@@ -18,9 +18,25 @@ import javax.servlet.http.HttpServletResponse;
 @RequestMapping("happy-code")
 public class HappyCodeGeneratorController {
 
-
+    /**
+     * 生成zip包
+     * @param happyCodeForm
+     * @param response
+     */
     @PostMapping("start")
     public void start(@RequestBody HappyCodeForm happyCodeForm, HttpServletResponse response){
+
+        // TODO
+
+    }
+
+    /**
+     * 预览
+     * @param happyCodeForm
+     * @param response
+     */
+    @PostMapping("view")
+    public void view(@RequestBody HappyCodeForm happyCodeForm, HttpServletResponse response){
 
         // TODO
 
