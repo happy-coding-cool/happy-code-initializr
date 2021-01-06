@@ -15,6 +15,7 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <happy-code.version>1.0.0.RELEASE</happy-code.version>
         <spring-initializr.version>0.10.0-SNAPSHOT</spring-initializr.version>
+        <freemarker.version>2.3.28</freemarker.version>
     </properties>
 
     <dependencyManagement>
@@ -40,6 +41,11 @@
         <dependency>
             <groupId>cool.happycoding</groupId>
             <artifactId>happy-code-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.freemarker</groupId>
+            <artifactId>freemarker</artifactId>
+            <version>${freemarker.version}</version>
         </dependency>
         <dependency>
             <groupId>io.spring.initializr</groupId>
