@@ -1,6 +1,12 @@
 package cool.happycoding.code.initializr.api.v1.rest;
 
+import com.google.common.collect.Lists;
+import cool.happycoding.code.base.result.ListResult;
+import cool.happycoding.code.initializr.api.v1.dto.TableDTO;
+import cool.happycoding.code.initializr.api.v1.form.Database;
 import cool.happycoding.code.initializr.api.v1.form.HappyCodeForm;
+import freemarker.template.Configuration;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,8 +21,11 @@ import javax.servlet.http.HttpServletResponse;
  * @Date 2020/12/27 12:34 下午
  */
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("happy-code")
 public class HappyCodeGeneratorController {
+
+    private final Configuration configuration;
 
     /**
      * 生成zip包
@@ -25,20 +34,21 @@ public class HappyCodeGeneratorController {
      */
     @PostMapping("start")
     public void start(@RequestBody HappyCodeForm happyCodeForm, HttpServletResponse response){
-
         // TODO
 
     }
 
     /**
      * 预览
-     * @param happyCodeForm
-     * @param response
+     * @param database
+     * @return TableDTO
      */
-    @PostMapping("view")
-    public void view(@RequestBody HappyCodeForm happyCodeForm, HttpServletResponse response){
+    @PostMapping("tables")
+    public ListResult<TableDTO> tables(@RequestBody Database database){
 
-        // TODO
+        return ListResult.success(Lists.newArrayList());
 
     }
+
+
 }
