@@ -27,13 +27,6 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-            <dependency>
-                <groupId>io.spring.initializr</groupId>
-                <artifactId>initializr-bom</artifactId>
-                <version>${spring-initializr.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -47,26 +40,10 @@
             <artifactId>freemarker</artifactId>
             <version>${freemarker.version}</version>
         </dependency>
-        <dependency>
-            <groupId>io.spring.initializr</groupId>
-            <artifactId>initializr-generator-spring</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>io.spring.initializr</groupId>
-            <artifactId>initializr-version-resolver</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>io.spring.initializr</groupId>
-            <artifactId>initializr-web</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>io.spring.initializr</groupId>
-            <artifactId>initializr-actuator</artifactId>
-        </dependency>
     </dependencies>
 
     <build>
-        <finalName>${artifactId}</finalName>
+        <finalName>${project.artifactId}</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
