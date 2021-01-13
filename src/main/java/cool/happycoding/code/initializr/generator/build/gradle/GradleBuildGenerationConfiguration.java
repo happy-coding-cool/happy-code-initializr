@@ -1,8 +1,7 @@
 package cool.happycoding.code.initializr.generator.build.gradle;
 
 import cool.happycoding.code.initializr.api.v1.form.HappyCodeForm;
-import cool.happycoding.code.initializr.base.AbstractGenerationConfiguration;
-import cool.happycoding.code.initializr.base.GenerationConfiguration;
+import cool.happycoding.code.initializr.base.BaseGenerationConfiguration;
 import freemarker.template.Configuration;
 
 /**
@@ -11,7 +10,7 @@ import freemarker.template.Configuration;
  * @Author lanlanhappy
  * @Date 2020/12/31 9:14 上午
  */
-public class GradleBuildGenerationConfiguration extends AbstractGenerationConfiguration {
+public class GradleBuildGenerationConfiguration extends BaseGenerationConfiguration {
 
 
     public GradleBuildGenerationConfiguration(Configuration configuration, HappyCodeForm happyCodeForm) {
