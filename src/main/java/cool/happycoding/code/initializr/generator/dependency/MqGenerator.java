@@ -1,6 +1,6 @@
-package cool.happycoding.code.initializr.generator.dependency.mq;
+package cool.happycoding.code.initializr.generator.dependency;
 
-import cool.happycoding.code.initializr.base.Generator;
+import cool.happycoding.code.initializr.generator.Generator;
 import cool.happycoding.code.initializr.generator.dependency.mybatis.MybatisGenerationConfiguration;
 
 /**

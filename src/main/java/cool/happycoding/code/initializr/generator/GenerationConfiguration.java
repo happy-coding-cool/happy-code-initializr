@@ -1,7 +1,8 @@
-package cool.happycoding.code.initializr.base;
+package cool.happycoding.code.initializr.generator;
 
 import cool.happycoding.code.initializr.api.v1.form.HappyCodeForm;
 import freemarker.template.Configuration;
+import lombok.Data;
 
 /**
  * @ClassName GenerationConfiguration
@@ -9,16 +10,20 @@ import freemarker.template.Configuration;
  * @Author lanlanhappy
  * @Date 2020/12/30 8:18 下午
  */
-public interface GenerationConfiguration {
+@Data
+public class GenerationConfiguration {
+
     /**
      * 获取 配置
      * @return
      */
-    Configuration getConfiguration();
+    private Configuration configuration;
 
     /**
      * 获取 生成参数
      * @return
      */
-    HappyCodeForm getHappyCodeForm();
+    private HappyCodeForm happyCodeForm;
+
+
 }

@@ -1,4 +1,4 @@
-package cool.happycoding.code.initializr.base;
+package cool.happycoding.code.initializr.generator;
 
 /**
  * @ClassName Generator

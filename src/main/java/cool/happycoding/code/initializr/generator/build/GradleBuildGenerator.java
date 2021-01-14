@@ -1,6 +1,6 @@
-package cool.happycoding.code.initializr.generator.build.gradle;
+package cool.happycoding.code.initializr.generator.build;
 
-import cool.happycoding.code.initializr.base.Generator;
+import cool.happycoding.code.initializr.generator.Generator;
 
 /**
  * @ClassName GradleBuildGenerator

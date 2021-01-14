@@ -1,6 +1,6 @@
-package cool.happycoding.code.initializr.generator.dependency.mybatis;
+package cool.happycoding.code.initializr.generator.dependency;
 
-import cool.happycoding.code.initializr.base.Generator;
+import cool.happycoding.code.initializr.generator.Generator;
 
 /**
  * @ClassName MybatisGenerator
@@ -9,9 +9,6 @@ import cool.happycoding.code.initializr.base.Generator;
  * @Date 2020/12/30 9:54 下午
  */
 public class MybatisGenerator implements Generator {
-
-    private MybatisGenerationConfiguration mybatisGenerationConfiguration;
-
 
     @Override
     public void generator() {

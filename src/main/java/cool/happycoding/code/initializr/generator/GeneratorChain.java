@@ -1,7 +1,6 @@
 package cool.happycoding.code.initializr.generator;
 
 import com.google.common.collect.Lists;
-import cool.happycoding.code.initializr.base.Generator;
 
 import java.util.List;
 
