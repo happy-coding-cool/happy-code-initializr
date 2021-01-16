@@ -45,7 +45,10 @@ public class GenerationConfiguration {
         return generationConfiguration;
     }
 
-
+    /**
+     * freemarker 模板参数
+     * @return
+     */
     public Map<String, Object> buildGenerateParamMap(){
         Map<String, Object> paramMap = Maps.newHashMap();
         paramMap.put("author", happyCodeForm.getAuthor());
@@ -53,7 +56,5 @@ public class GenerationConfiguration {
         paramMap.put("artifactToCamelCase", upperFirst(toCamelCase(StrUtil.replaceChars(happyCodeForm.getProjectMetadata().getArtifact(), "-","_"))));
         return paramMap;
     }
-
-
 
 }
