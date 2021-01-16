@@ -3,6 +3,7 @@ package cool.happycoding.code.initializr.generator;
 import cn.hutool.core.io.FileUtil;
 import cn.hutool.core.util.ZipUtil;
 import cool.happycoding.code.initializr.api.v1.form.HappyCodeForm;
+import cool.happycoding.code.initializr.generator.build.MavenBuildGenerator;
 import freemarker.template.Configuration;
 
 import java.io.File;
@@ -25,7 +26,10 @@ public class GeneratorHandler {
                 = GenerationConfiguration.of(configuration, happyCodeForm);
         generationConfiguration.setZipFilePath(file.getAbsolutePath());
         new GeneratorChain()
-//                .next()
+                .next(new ReadMeGenerator(generationConfiguration))
+                .next(new MavenBuildGenerator(generationConfiguration))
+                .next(new SrcMainGenerator(generationConfiguration))
+                .next(new SrcTestGenerator(generationConfiguration))
                 .generator();
         // file 文件生成
         File zipFile = ZipUtil.zip(new File(

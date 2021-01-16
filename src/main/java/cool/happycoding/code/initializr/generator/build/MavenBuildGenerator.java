@@ -1,6 +1,10 @@
 package cool.happycoding.code.initializr.generator.build;
 
+import cool.happycoding.code.initializr.generator.BaseGenerator;
+import cool.happycoding.code.initializr.generator.GenerationConfiguration;
 import cool.happycoding.code.initializr.generator.Generator;
+
+import static cool.happycoding.code.initializr.generator.GeneratorPath.GenerateFile.POM_FILE;
 
 /**
  * @ClassName MavenBuildGenerator
@@ -10,14 +14,13 @@ import cool.happycoding.code.initializr.generator.Generator;
  */
 public class MavenBuildGenerator implements Generator{
 
+    private GenerationConfiguration generationConfiguration;
 
-
-    public MavenBuildGenerator(){
+    public MavenBuildGenerator(GenerationConfiguration generationConfiguration){
+        this.generationConfiguration = generationConfiguration;
     }
-
-
     @Override
     public void generator() {
-
+        new BaseGenerator(generationConfiguration, POM_FILE);
     }
 }

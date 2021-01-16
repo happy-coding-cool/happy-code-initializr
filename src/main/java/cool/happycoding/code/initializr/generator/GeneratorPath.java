@@ -21,7 +21,7 @@ public class GeneratorPath {
     public enum GenerateFile{
 
         // Pom文件
-        BASE_FILE(POM_XML_PATH, POM_XML_FTL_PATH),
+        POM_FILE(POM_XML_PATH, POM_XML_FTL_PATH),
         // readme
         README_FILE(README_PATH, README_FTL_PATH),
         // application.yml file
