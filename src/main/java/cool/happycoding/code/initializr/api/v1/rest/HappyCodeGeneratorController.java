@@ -1,9 +1,5 @@
 package cool.happycoding.code.initializr.api.v1.rest;
 
-import com.google.common.collect.Lists;
-import cool.happycoding.code.base.result.ListResult;
-import cool.happycoding.code.initializr.api.v1.dto.TableDTO;
-import cool.happycoding.code.initializr.api.v1.form.Database;
 import cool.happycoding.code.initializr.api.v1.form.HappyCodeForm;
 import freemarker.template.Configuration;
 import lombok.RequiredArgsConstructor;
@@ -35,18 +31,6 @@ public class HappyCodeGeneratorController {
     @PostMapping("start")
     public void start(@RequestBody HappyCodeForm happyCodeForm, HttpServletResponse response){
         // TODO
-
-    }
-
-    /**
-     * 预览
-     * @param database
-     * @return TableDTO
-     */
-    @PostMapping("tables")
-    public ListResult<TableDTO> tables(@RequestBody Database database){
-
-        return ListResult.success(Lists.newArrayList());
 
     }
 
