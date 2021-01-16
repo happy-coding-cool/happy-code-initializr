@@ -1,9 +1,16 @@
 package cool.happycoding.code.initializr.generator;
 
+import cn.hutool.core.util.StrUtil;
+import com.google.common.collect.Maps;
 import cool.happycoding.code.initializr.api.v1.form.HappyCodeForm;
 import freemarker.template.Configuration;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.Map;
+
+import static cn.hutool.core.util.StrUtil.toCamelCase;
+import static cn.hutool.core.util.StrUtil.upperFirst;
 
 /**
  * @ClassName GenerationConfiguration
@@ -36,6 +43,15 @@ public class GenerationConfiguration {
         generationConfiguration.setConfiguration(configuration);
         generationConfiguration.setHappyCodeForm(happyCodeForm);
         return generationConfiguration;
+    }
+
+
+    public Map<String, Object> buildGenerateParamMap(){
+        Map<String, Object> paramMap = Maps.newHashMap();
+        paramMap.put("author", happyCodeForm.getAuthor());
+        paramMap.put("projectMetadata", happyCodeForm.getProjectMetadata());
+        paramMap.put("artifactToCamelCase", upperFirst(toCamelCase(StrUtil.replaceChars(happyCodeForm.getProjectMetadata().getArtifact(), "-","_"))));
+        return paramMap;
     }
 
 

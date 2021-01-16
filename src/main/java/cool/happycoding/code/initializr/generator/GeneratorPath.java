@@ -16,7 +16,7 @@ public class GeneratorPath {
     public static final String APPLICATION_YML_FTL_PATH = "templates/application.java.ftl";
 
     public static final String SRC_MAIN_APP_PATH = "%s/src/main/java/%s/%sApplication.java";
-    public static final String SRC_MAIN_APP_FTL_PATH = "%s/src/main/java/%s/%sApplication.java";
+    public static final String SRC_MAIN_APP_FTL_PATH = "templates/application.java.ftl";
 
     public enum GenerateFile{
 
