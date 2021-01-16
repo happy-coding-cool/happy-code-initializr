@@ -3,6 +3,7 @@ package cool.happycoding.code.initializr.generator;
 import cool.happycoding.code.initializr.api.v1.form.HappyCodeForm;
 import freemarker.template.Configuration;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * @ClassName GenerationConfiguration
@@ -24,6 +25,19 @@ public class GenerationConfiguration {
      * @return
      */
     private HappyCodeForm happyCodeForm;
+
+    /**
+     * zip file path
+     */
+    private String zipFilePath;
+
+    public static GenerationConfiguration of(Configuration configuration, HappyCodeForm happyCodeForm){
+        GenerationConfiguration generationConfiguration = new GenerationConfiguration();
+        generationConfiguration.setConfiguration(configuration);
+        generationConfiguration.setHappyCodeForm(happyCodeForm);
+        return generationConfiguration;
+    }
+
 
 
 }

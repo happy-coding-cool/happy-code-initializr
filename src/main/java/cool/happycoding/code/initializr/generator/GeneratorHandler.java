@@ -21,6 +21,12 @@ public class GeneratorHandler {
             FileUtil.del(file);
         }
         FileUtil.mkdir(file);
+        GenerationConfiguration generationConfiguration
+                = GenerationConfiguration.of(configuration, happyCodeForm);
+        generationConfiguration.setZipFilePath(file.getAbsolutePath());
+        new GeneratorChain()
+//                .next()
+                .generator();
         // file 文件生成
         File zipFile = ZipUtil.zip(new File(
                         happyCodeForm.getProjectMetadata().getArtifact() + ".zip"),
