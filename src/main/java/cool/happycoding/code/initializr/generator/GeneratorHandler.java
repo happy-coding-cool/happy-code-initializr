@@ -26,9 +26,13 @@ public class GeneratorHandler {
                 = GenerationConfiguration.of(configuration, happyCodeForm);
         generationConfiguration.setZipFilePath(file.getAbsolutePath());
         new GeneratorChain()
+                 // 生成readme
                 .next(new ReadMeGenerator(generationConfiguration))
+                 // 生成pom.xml
                 .next(new MavenBuildGenerator(generationConfiguration))
+                 // 生成 main app
                 .next(new SrcMainGenerator(generationConfiguration))
+                 // 生成 test
                 .next(new SrcTestGenerator(generationConfiguration))
                 .generator();
         // file 文件生成
