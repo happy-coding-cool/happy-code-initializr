@@ -11,7 +11,7 @@
 
     <groupId>${projectMetadata.group}</groupId>
     <artifactId>${projectMetadata.artifact}</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>0.0.1-SNAPSHOT</version>
 
     <name>${projectMetadata.projectName}</name>
     <description>${projectMetadata.description}</description>
@@ -27,7 +27,6 @@
             <artifactId>happy-code-starter-web</artifactId>
         </dependency>
     </dependencies>
-
     <build>
         <#noparse><finalName>${project.artifactId}</finalName></#noparse>
         <plugins>

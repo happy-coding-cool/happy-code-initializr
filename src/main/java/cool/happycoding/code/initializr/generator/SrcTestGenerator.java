@@ -8,7 +8,7 @@ package cool.happycoding.code.initializr.generator;
  */
 public class SrcTestGenerator implements Generator{
 
-    private GenerationConfiguration generationConfiguration;
+    private final GenerationConfiguration generationConfiguration;
 
     public SrcTestGenerator(GenerationConfiguration generationConfiguration){
         this.generationConfiguration = generationConfiguration;

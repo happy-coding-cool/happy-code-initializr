@@ -10,7 +10,7 @@ import static cool.happycoding.code.initializr.generator.GeneratorPath.GenerateF
  */
 public class SrcMainGenerator implements Generator{
 
-    private GenerationConfiguration generationConfiguration;
+    private final GenerationConfiguration generationConfiguration;
 
     public SrcMainGenerator(GenerationConfiguration generationConfiguration){
         this.generationConfiguration = generationConfiguration;

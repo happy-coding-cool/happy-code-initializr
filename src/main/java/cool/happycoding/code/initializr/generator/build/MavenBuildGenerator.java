@@ -14,7 +14,7 @@ import static cool.happycoding.code.initializr.generator.GeneratorPath.GenerateF
  */
 public class MavenBuildGenerator implements Generator{
 
-    private GenerationConfiguration generationConfiguration;
+    private final GenerationConfiguration generationConfiguration;
 
     public MavenBuildGenerator(GenerationConfiguration generationConfiguration){
         this.generationConfiguration = generationConfiguration;

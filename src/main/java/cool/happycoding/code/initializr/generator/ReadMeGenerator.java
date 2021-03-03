@@ -10,7 +10,7 @@ import static cool.happycoding.code.initializr.generator.GeneratorPath.GenerateF
  */
 public class ReadMeGenerator implements Generator{
 
-    private GenerationConfiguration generationConfiguration;
+    private final GenerationConfiguration generationConfiguration;
 
     public ReadMeGenerator(GenerationConfiguration generationConfiguration){
         this.generationConfiguration = generationConfiguration;
