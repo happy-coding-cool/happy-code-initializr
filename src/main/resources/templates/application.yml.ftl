@@ -11,7 +11,6 @@ happy:
       description: ${projectMetadata.description}
       version: 1.0
       contact:
-        url: http://happycoding.cool/
         name: ${author.name}
         email: ${author.email}
       enable: true

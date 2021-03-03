@@ -3,8 +3,8 @@ package cool.happycoding.code.initializr.generator;
 import cn.hutool.core.io.FileUtil;
 import com.google.common.collect.Lists;
 import cool.happycoding.code.base.exception.BizException;
-import cool.happycoding.code.initializr.api.v1.form.HappyCodeForm;
-import cool.happycoding.code.initializr.api.v1.form.ProjectMetadata;
+import cool.happycoding.code.initializr.dto.form.HappyCodeForm;
+import cool.happycoding.code.initializr.dto.form.ProjectMetadata;
 import freemarker.template.Configuration;
 import lombok.extern.slf4j.Slf4j;
 
@@ -26,11 +26,11 @@ import static cool.happycoding.code.initializr.generator.GeneratorPath.GenerateF
 @Slf4j
 public class BaseGenerator implements Generator{
 
-    private HappyCodeForm happyCodeForm;
-    private Configuration configuration;
-    private String zipFilePath;
-    private Map<String, Object> paramMap;
-    private GeneratorPath.GenerateFile generateFile;
+    private final HappyCodeForm happyCodeForm;
+    private final Configuration configuration;
+    private final String zipFilePath;
+    private final Map<String, Object> paramMap;
+    private final GeneratorPath.GenerateFile generateFile;
 
     public BaseGenerator(GenerationConfiguration generationConfiguration,
                          GeneratorPath.GenerateFile generateFile){

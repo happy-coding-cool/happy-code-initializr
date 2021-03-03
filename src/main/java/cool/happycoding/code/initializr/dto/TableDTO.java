@@ -1,4 +1,4 @@
-package cool.happycoding.code.initializr.api.v1.dto;
+package cool.happycoding.code.initializr.dto;
 
 import cool.happycoding.code.base.pojo.DTO;
 import lombok.Data;

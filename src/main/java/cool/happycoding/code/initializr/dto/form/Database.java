@@ -1,4 +1,4 @@
-package cool.happycoding.code.initializr.api.v1.form;
+package cool.happycoding.code.initializr.dto.form;
 
 import  cool.happycoding.code.base.pojo.Form;
 import lombok.Data;

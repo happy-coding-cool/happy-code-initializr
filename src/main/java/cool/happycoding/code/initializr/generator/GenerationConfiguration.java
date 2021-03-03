@@ -2,10 +2,9 @@ package cool.happycoding.code.initializr.generator;
 
 import cn.hutool.core.util.StrUtil;
 import com.google.common.collect.Maps;
-import cool.happycoding.code.initializr.api.v1.form.HappyCodeForm;
+import cool.happycoding.code.initializr.dto.form.HappyCodeForm;
 import freemarker.template.Configuration;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.util.Map;
 
@@ -52,6 +51,7 @@ public class GenerationConfiguration {
     public Map<String, Object> buildGenerateParamMap(){
         Map<String, Object> paramMap = Maps.newHashMap();
         paramMap.put("author", happyCodeForm.getAuthor());
+        paramMap.put("happyCodeVersion", happyCodeForm.getHappyCodeVersion());
         paramMap.put("projectMetadata", happyCodeForm.getProjectMetadata());
         paramMap.put("artifactToCamelCase", upperFirst(toCamelCase(StrUtil.replaceChars(happyCodeForm.getProjectMetadata().getArtifact(), "-","_"))));
         return paramMap;

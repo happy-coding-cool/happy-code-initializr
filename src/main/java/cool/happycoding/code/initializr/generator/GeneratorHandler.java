@@ -2,7 +2,7 @@ package cool.happycoding.code.initializr.generator;
 
 import cn.hutool.core.io.FileUtil;
 import cn.hutool.core.util.ZipUtil;
-import cool.happycoding.code.initializr.api.v1.form.HappyCodeForm;
+import cool.happycoding.code.initializr.dto.form.HappyCodeForm;
 import cool.happycoding.code.initializr.generator.build.MavenBuildGenerator;
 import freemarker.template.Configuration;
 

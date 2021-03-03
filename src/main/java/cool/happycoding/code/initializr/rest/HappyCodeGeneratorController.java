@@ -1,9 +1,9 @@
-package cool.happycoding.code.initializr.api.v1.rest;
+package cool.happycoding.code.initializr.rest;
 
 import cn.hutool.core.io.FileUtil;
 import cn.hutool.core.io.IoUtil;
 import cool.happycoding.code.base.exception.BizException;
-import cool.happycoding.code.initializr.api.v1.form.HappyCodeForm;
+import cool.happycoding.code.initializr.dto.form.HappyCodeForm;
 import cool.happycoding.code.initializr.generator.GeneratorHandler;
 import freemarker.template.Configuration;
 import lombok.RequiredArgsConstructor;
