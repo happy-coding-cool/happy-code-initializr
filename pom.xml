@@ -27,6 +27,10 @@
             <artifactId>happy-code-starter-web</artifactId>
         </dependency>
         <dependency>
+            <groupId>cool.happycoding</groupId>
+            <artifactId>happy-code-starter-swagger</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.freemarker</groupId>
             <artifactId>freemarker</artifactId>
             <version>${freemarker.version}</version>

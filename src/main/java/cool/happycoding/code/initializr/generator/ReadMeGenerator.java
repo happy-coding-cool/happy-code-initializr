@@ -18,6 +18,6 @@ public class ReadMeGenerator implements Generator{
 
     @Override
     public void generator() {
-        new BaseGenerator(generationConfiguration, README_FILE);
+        new BaseGenerator(generationConfiguration, README_FILE).generator();
     }
 }

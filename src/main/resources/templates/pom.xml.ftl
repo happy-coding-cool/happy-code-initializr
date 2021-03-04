@@ -26,6 +26,10 @@
             <groupId>cool.happycoding</groupId>
             <artifactId>happy-code-starter-web</artifactId>
         </dependency>
+        <dependency>
+            <groupId>cool.happycoding</groupId>
+            <artifactId>happy-code-starter-swagger</artifactId>
+        </dependency>
     </dependencies>
     <build>
         <#noparse><finalName>${project.artifactId}</finalName></#noparse>

@@ -25,8 +25,7 @@ public class InitializeConfiguration {
         configuration.setDefaultEncoding(StandardCharsets.UTF_8.name());
         configuration.setDirectoryForTemplateLoading(new File(
                 StrUtil.concat(false,
-                        InitializeConfiguration.class.getResource("/").toURI().getPath(),
-                        "/templates/")
+                        InitializeConfiguration.class.getResource("/").toURI().getPath())
         ));
         return configuration;
     }

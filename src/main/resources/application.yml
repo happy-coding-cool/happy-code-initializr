@@ -1,2 +1,14 @@
 server:
   port: 8081
+
+happy:
+  code:
+    swagger:
+      base-package: cool.happycoding.code.initializr
+      enable: true
+      group: happy-code-initializr
+      title: happycode 脚手架
+      contact:
+        email: happycoding@aliyun.com
+        url: https://github.com/happy-coding-cool/happy-code-initializr/issues
+        name: lanlanhappy

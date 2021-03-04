@@ -35,10 +35,12 @@ public class GeneratorHandler {
                  // 生成 test
                 .next(new SrcTestGenerator(generationConfiguration))
                 .generator();
+
         // file 文件生成
-        File zipFile = ZipUtil.zip(new File(
+        File zipFile =  ZipUtil.zip(new File(
                         happyCodeForm.getProjectMetadata().getArtifact() + ".zip"),
                 true, file);
+        FileUtil.del(file);
         return zipFile;
     }
 }

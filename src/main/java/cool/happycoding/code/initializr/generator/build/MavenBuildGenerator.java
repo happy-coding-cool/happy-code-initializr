@@ -21,6 +21,6 @@ public class MavenBuildGenerator implements Generator{
     }
     @Override
     public void generator() {
-        new BaseGenerator(generationConfiguration, POM_FILE);
+        new BaseGenerator(generationConfiguration, POM_FILE).generator();
     }
 }

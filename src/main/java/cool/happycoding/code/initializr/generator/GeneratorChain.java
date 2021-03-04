@@ -12,7 +12,7 @@ import java.util.List;
  */
 public class GeneratorChain implements Generator {
 
-    private List<Generator> generators;
+    private final List<Generator> generators;
 
     public GeneratorChain(){
         generators = Lists.newArrayList();
@@ -20,7 +20,7 @@ public class GeneratorChain implements Generator {
 
     @Override
     public void generator() {
-        generators.forEach(generator -> generator.generator());
+      generators.forEach(Generator::generator);
     }
 
     public GeneratorChain next(Generator generator){

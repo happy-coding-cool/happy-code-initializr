@@ -19,8 +19,8 @@ public class SrcMainGenerator implements Generator{
     @Override
     public void generator() {
         // main 方法
-        new BaseGenerator(generationConfiguration, GeneratorPath.GenerateFile.APPLICATION_JAVA_FILE);
+        new BaseGenerator(generationConfiguration, GeneratorPath.GenerateFile.APPLICATION_JAVA_FILE).generator();
         // resources 文件生成
-        new BaseGenerator(generationConfiguration, APPLICATION_FILE);
+        new BaseGenerator(generationConfiguration, APPLICATION_FILE).generator();
     }
 }

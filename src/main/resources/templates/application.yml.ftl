@@ -1,7 +1,6 @@
 # 端口
 server:
   port: 8080
-
 happy:
   boot:
     swagger:
