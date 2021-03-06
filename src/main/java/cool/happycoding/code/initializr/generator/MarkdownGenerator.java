@@ -9,17 +9,19 @@ import static cool.happycoding.code.initializr.generator.GeneratorPath.GenerateF
  * @author lanlanhappy
  * @date 2021/01/16 5:36 下午
  */
-public class MdGenerator implements Generator{
+public class MarkdownGenerator implements Generator{
 
     private final GenerationConfiguration generationConfiguration;
 
-    public MdGenerator(GenerationConfiguration generationConfiguration){
+    public MarkdownGenerator(GenerationConfiguration generationConfiguration){
         this.generationConfiguration = generationConfiguration;
     }
 
     @Override
     public void generator() {
+        // 生成readme.md
         new BaseGenerator(generationConfiguration, README_FILE).generator();
+        // 生成help.md
         new BaseGenerator(generationConfiguration, HELP_FILE).generator();
     }
 }

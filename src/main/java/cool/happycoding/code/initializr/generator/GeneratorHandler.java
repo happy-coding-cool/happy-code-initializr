@@ -27,7 +27,7 @@ public class GeneratorHandler {
         generationConfiguration.setZipFilePath(file.getAbsolutePath());
         new GeneratorChain()
                  // 生成readme
-                .next(new MdGenerator(generationConfiguration))
+                .next(new MarkdownGenerator(generationConfiguration))
                  // 生成pom.xml
                 .next(new MavenBuildGenerator(generationConfiguration))
                  // 生成 main app
