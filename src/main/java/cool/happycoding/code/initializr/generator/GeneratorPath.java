@@ -12,6 +12,9 @@ public class GeneratorPath {
     public static final String README_PATH = "%s/README.md";
     public static final String README_FTL_PATH = "templates/README.md.ftl";
 
+    public static final String HELP_PATH = "%s/HELP.md";
+    public static final String HELP_FTL_PATH = "templates/HELP.md.ftl";
+
     public static final String APPLICATION_YML_PATH = "%s/src/main/resources/application.yml";
     public static final String APPLICATION_YML_FTL_PATH = "templates/application.yml.ftl";
 
@@ -22,8 +25,12 @@ public class GeneratorPath {
 
         // Pom文件
         POM_FILE(POM_XML_PATH, POM_XML_FTL_PATH),
+
         // readme
         README_FILE(README_PATH, README_FTL_PATH),
+        // help
+        HELP_FILE(HELP_PATH, HELP_FTL_PATH),
+
         // application.yml file
         APPLICATION_FILE(APPLICATION_YML_PATH, APPLICATION_YML_FTL_PATH),
         // application java
