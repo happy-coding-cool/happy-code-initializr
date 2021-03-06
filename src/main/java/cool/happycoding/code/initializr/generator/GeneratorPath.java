@@ -15,6 +15,9 @@ public class GeneratorPath {
     public static final String HELP_PATH = "%s/HELP.md";
     public static final String HELP_FTL_PATH = "templates/HELP.md.ftl";
 
+    public static final String IGNORE_PATH = "%s/.gitignore";
+    public static final String IGNORE_FTL_PATH = "templates/.gitignore.ftl";
+
     public static final String APPLICATION_YML_PATH = "%s/src/main/resources/application.yml";
     public static final String APPLICATION_YML_FTL_PATH = "templates/application.yml.ftl";
 
@@ -30,6 +33,9 @@ public class GeneratorPath {
         README_FILE(README_PATH, README_FTL_PATH),
         // help
         HELP_FILE(HELP_PATH, HELP_FTL_PATH),
+
+        // ignore
+        IGNORE_FILE(IGNORE_PATH, IGNORE_FTL_PATH),
 
         // application.yml file
         APPLICATION_FILE(APPLICATION_YML_PATH, APPLICATION_YML_FTL_PATH),

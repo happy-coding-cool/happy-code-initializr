@@ -30,6 +30,8 @@ public class GeneratorHandler {
                 .next(new MarkdownGenerator(generationConfiguration))
                  // 生成pom.xml
                 .next(new MavenBuildGenerator(generationConfiguration))
+                 // 生成.gitignore
+                .next(new IgnoreGenerator(generationConfiguration))
                  // 生成 main app
                 .next(new SrcMainGenerator(generationConfiguration))
                  // 生成 test

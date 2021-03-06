@@ -21,6 +21,9 @@ public class MavenBuildGenerator implements Generator{
     }
     @Override
     public void generator() {
+        // 生成pom文件
         new BaseGenerator(generationConfiguration, POM_FILE).generator();
+        // 生成.mvn 文件夹
+        // TODO
     }
 }
