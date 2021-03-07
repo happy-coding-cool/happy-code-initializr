@@ -12,6 +12,7 @@ import lombok.Data;
 @Data
 public class HappyCodeForm extends Form {
 
+
     private String build;
     private String happyCodeVersion;
     private Author author;

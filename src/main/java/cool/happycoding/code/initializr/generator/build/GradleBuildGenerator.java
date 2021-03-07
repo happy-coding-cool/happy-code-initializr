@@ -1,5 +1,6 @@
 package cool.happycoding.code.initializr.generator.build;
 
+import cool.happycoding.code.initializr.generator.GenerationConfiguration;
 import cool.happycoding.code.initializr.generator.Generator;
 
 /**
@@ -9,6 +10,13 @@ import cool.happycoding.code.initializr.generator.Generator;
  * @Date 2020/12/31 9:15 上午
  */
 public class GradleBuildGenerator implements Generator {
+
+    private final GenerationConfiguration generationConfiguration;
+
+    public GradleBuildGenerator(GenerationConfiguration generationConfiguration) {
+        this.generationConfiguration = generationConfiguration;
+    }
+
     @Override
     public void generator() {
 

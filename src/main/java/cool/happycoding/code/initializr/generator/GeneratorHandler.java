@@ -3,10 +3,13 @@ package cool.happycoding.code.initializr.generator;
 import cn.hutool.core.io.FileUtil;
 import cn.hutool.core.util.ZipUtil;
 import cool.happycoding.code.initializr.dto.form.HappyCodeForm;
-import cool.happycoding.code.initializr.generator.build.MavenBuildGenerator;
+import cool.happycoding.code.initializr.generator.build.BuildGenerator;
+import cool.happycoding.code.initializr.utils.GenerateUtils;
 import freemarker.template.Configuration;
 
 import java.io.File;
+
+import static cool.happycoding.code.initializr.utils.GenerateUtils.ifNotExistsThenCreate;
 
 /**
  * @ClassName GeneratorHandler
@@ -17,19 +20,15 @@ import java.io.File;
 public class GeneratorHandler {
 
     public static File generator(Configuration configuration, HappyCodeForm happyCodeForm){
-        File file = new File(happyCodeForm.getProjectMetadata().getArtifact());
-        if (file.exists()) {
-            FileUtil.del(file);
-        }
-        FileUtil.mkdir(file);
+        File file = ifNotExistsThenCreate(happyCodeForm.getProjectMetadata().getArtifact());
         GenerationConfiguration generationConfiguration
                 = GenerationConfiguration.of(configuration, happyCodeForm);
         generationConfiguration.setZipFilePath(file.getAbsolutePath());
         new GeneratorChain()
                  // 生成readme
                 .next(new MarkdownGenerator(generationConfiguration))
-                 // 生成pom.xml
-                .next(new MavenBuildGenerator(generationConfiguration))
+                 // build配置
+                .next(new BuildGenerator(generationConfiguration))
                  // 生成.gitignore
                 .next(new IgnoreGenerator(generationConfiguration))
                  // 生成 main app
