@@ -16,7 +16,7 @@ public class BuildGenerator implements Generator {
     private static final String GRADLE_BUILD = "gradle";
 
     public BuildGenerator(GenerationConfiguration generationConfiguration){
-        this.generator = generator(generationConfiguration);
+        this.generator = build(generationConfiguration);
     }
 
     @Override
@@ -24,7 +24,7 @@ public class BuildGenerator implements Generator {
         generator.generator();
     }
 
-    private Generator generator(GenerationConfiguration generationConfiguration){
+    private Generator build(GenerationConfiguration generationConfiguration){
         if (StrUtil.equalsAnyIgnoreCase(GRADLE_BUILD, generationConfiguration.getHappyCodeForm().getBuild())){
             return new GradleBuildGenerator(generationConfiguration);
         }else{
