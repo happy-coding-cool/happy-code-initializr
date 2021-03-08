@@ -59,12 +59,16 @@ public class GenerationConfiguration implements Config{
     }
 
     public InjectionConfig injectionConfig(){
-        return new InjectionConfig() {
+
+        // TODO 构造自定义 config
+        InjectionConfig cfg =  new InjectionConfig() {
             @Override
             public void initMap() {
 
             }
         };
+
+        return cfg;
     }
 
 

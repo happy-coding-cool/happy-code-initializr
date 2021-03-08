@@ -29,7 +29,7 @@ public class MybatisGenerator implements Generator{
     }
 
     private AutoGenerator build(GenerationConfiguration generationConfiguration) {
-        // TODO 构造config
+
         AutoGenerator mpg = new AutoGenerator();
         HappyCodeForm happyCodeForm = generationConfiguration.getHappyCodeForm();
         Author author = happyCodeForm.getAuthor();
