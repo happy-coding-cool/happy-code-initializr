@@ -1,6 +1,7 @@
 package cool.happycoding.code.initializr.generator;
 
 import cn.hutool.core.util.StrUtil;
+import com.baomidou.mybatisplus.generator.InjectionConfig;
 import com.google.common.collect.Maps;
 import cool.happycoding.code.initializr.dto.form.HappyCodeForm;
 import freemarker.template.Configuration;
@@ -18,7 +19,7 @@ import static cn.hutool.core.util.StrUtil.upperFirst;
  * @Date 2020/12/30 8:18 下午
  */
 @Data
-public class GenerationConfiguration {
+public class GenerationConfiguration implements Config{
 
     /**
      * 获取 配置
@@ -56,5 +57,15 @@ public class GenerationConfiguration {
         paramMap.put("artifactToCamelCase", upperFirst(toCamelCase(StrUtil.replaceChars(happyCodeForm.getProjectMetadata().getArtifact(), "-","_"))));
         return paramMap;
     }
+
+    public InjectionConfig injectionConfig(){
+        return new InjectionConfig() {
+            @Override
+            public void initMap() {
+
+            }
+        };
+    }
+
 
 }

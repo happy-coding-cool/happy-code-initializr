@@ -1,6 +1,7 @@
 package cool.happycoding.code.initializr.dto.form;
 
 import  cool.happycoding.code.base.pojo.Form;
+import cool.happycoding.code.initializr.generator.Config;
 import lombok.Data;
 
 /**
@@ -17,5 +18,15 @@ public class Database extends Form {
     private String username;
     private String password;
     private String schema;
+
+    /**
+     * 生成mysql 连接 url
+     * @return
+     */
+    public String mysqlConn(){
+        return String
+                .format(Config.MYSQL_URL, host, port, schema);
+    }
+
 
 }
