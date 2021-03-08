@@ -29,47 +29,53 @@ public class MybatisGenerator implements Generator{
     }
 
     private AutoGenerator build(GenerationConfiguration generationConfiguration) {
-
-        AutoGenerator mpg = new AutoGenerator();
         HappyCodeForm happyCodeForm = generationConfiguration.getHappyCodeForm();
-        Author author = happyCodeForm.getAuthor();
         Database database = happyCodeForm.getDatabase();
+        Author author = happyCodeForm.getAuthor();
         ProjectMetadata projectMetadata = happyCodeForm.getProjectMetadata();
+        return new AutoGenerator()
+                // 全局配置
+                .setGlobalConfig(globalConfig(author, generationConfiguration.getZipFilePath()))
+                // 数据库配置
+                .setDataSource(dataSourceConfig(database))
+                // 包配置
+                .setPackageInfo(packageConfig(projectMetadata))
+                // 自定义配置
+                .setCfg(generationConfiguration.injectionConfig());
+    }
+
+    private GlobalConfig globalConfig(Author author, String outDir){
         // 全局配置
-        GlobalConfig gc =
-                new GlobalConfig()
-                        .setOutputDir(generationConfiguration.getZipFilePath() + "/src/main/java")
-                        .setAuthor(author.getName())
-                        .setOpen(false)
-                        .setFileOverride(IS_FILE_OVERRIDE)
-                        // 实体属性 Swagger2 注解
-                        .setSwagger2(true)
-                        .setDateType(DateType.ONLY_DATE)
-                        .setBaseColumnList(true)
-                        .setBaseResultMap(true);
-        mpg.setGlobalConfig(gc);
-        // 数据库配置
-        DataSourceConfig dsc =
-                new DataSourceConfig()
+        return new GlobalConfig()
+                .setOutputDir(outDir + "/src/main/java")
+                .setAuthor(author.getName())
+                .setOpen(false)
+                .setFileOverride(IS_FILE_OVERRIDE)
+                // 实体属性 Swagger2 注解
+                .setSwagger2(true)
+                .setDateType(DateType.ONLY_DATE)
+                .setBaseColumnList(true)
+                .setBaseResultMap(true);
+    }
+
+    private DataSourceConfig dataSourceConfig(Database database){
+        return new DataSourceConfig()
                         .setUrl(database.mysqlConn())
                         .setDriverName(Config.MYSQL_DRIVER)
                         .setUsername(database.getUsername())
                         .setPassword(database.getPassword());
-        mpg.setDataSource(dsc);
-        // 包配置
-        PackageConfig pc =
-                new PackageConfig()
-                .setParent(projectMetadata.getProPackage())
-                .setController("rest")
-                .setService("service")
-                .setServiceImpl("service.impl")
-                .setEntity("dao.entity")
-                .setMapper("dao.mapper")
-                .setXml("");
-        mpg.setPackageInfo(pc);
-        // 自定义配置
-        mpg.setCfg(generationConfiguration.injectionConfig());
-        return mpg;
+    }
+
+    private PackageConfig packageConfig(ProjectMetadata projectMetadata){
+
+        return new PackageConfig()
+                        .setParent(projectMetadata.getProPackage())
+                        .setController("rest")
+                        .setService("service")
+                        .setServiceImpl("service.impl")
+                        .setEntity("dao.entity")
+                        .setMapper("dao.mapper")
+                        .setXml("");
     }
 
 
