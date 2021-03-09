@@ -1,10 +1,10 @@
 package cool.happycoding.code.initializr.generator;
 
 import com.baomidou.mybatisplus.generator.AutoGenerator;
-import com.baomidou.mybatisplus.generator.config.DataSourceConfig;
-import com.baomidou.mybatisplus.generator.config.GlobalConfig;
-import com.baomidou.mybatisplus.generator.config.PackageConfig;
+import com.baomidou.mybatisplus.generator.config.*;
 import com.baomidou.mybatisplus.generator.config.rules.DateType;
+import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
+import com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;
 import cool.happycoding.code.initializr.dto.form.Author;
 import cool.happycoding.code.initializr.dto.form.Database;
 import cool.happycoding.code.initializr.dto.form.HappyCodeForm;
@@ -41,7 +41,14 @@ public class MybatisGenerator implements Generator{
                 // 包配置
                 .setPackageInfo(packageConfig(projectMetadata))
                 // 自定义配置
-                .setCfg(generationConfiguration.injectionConfig());
+                .setCfg(generationConfiguration.injectionConfig())
+                // entity/service/controller代码模版配置
+                .setTemplate(new TemplateConfig())
+                // 数据库表生成设置
+                .setStrategy(strategyConfig(database))
+                // 模版引擎设置
+                .setTemplateEngine(new FreemarkerTemplateEngine())
+                ;
     }
 
     private GlobalConfig globalConfig(Author author, String outDir){
@@ -78,6 +85,16 @@ public class MybatisGenerator implements Generator{
                         .setXml("");
     }
 
+
+    private StrategyConfig strategyConfig(Database database){
+        return new StrategyConfig()
+                .setNaming(NamingStrategy.underline_to_camel)
+                .setColumnNaming(NamingStrategy.underline_to_camel)
+                .setEntityLombokModel(true)
+                .setRestControllerStyle(true)
+                .setInclude(database.getTables().toArray(new String[]{}))
+                .setControllerMappingHyphenStyle(true);
+    }
 
     @Override
     public void generator() {

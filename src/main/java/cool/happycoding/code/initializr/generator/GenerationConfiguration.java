@@ -1,12 +1,17 @@
 package cool.happycoding.code.initializr.generator;
 
 import cn.hutool.core.util.StrUtil;
+import com.baomidou.mybatisplus.core.toolkit.StringPool;
 import com.baomidou.mybatisplus.generator.InjectionConfig;
+import com.baomidou.mybatisplus.generator.config.FileOutConfig;
+import com.baomidou.mybatisplus.generator.config.po.TableInfo;
 import com.google.common.collect.Maps;
 import cool.happycoding.code.initializr.dto.form.HappyCodeForm;
 import freemarker.template.Configuration;
 import lombok.Data;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import static cn.hutool.core.util.StrUtil.toCamelCase;
@@ -59,15 +64,23 @@ public class GenerationConfiguration implements Config{
     }
 
     public InjectionConfig injectionConfig(){
-
-        // TODO 构造自定义 config
+        // 构造自定义 config
         InjectionConfig cfg =  new InjectionConfig() {
             @Override
             public void initMap() {
-
+                this.setMap(buildGenerateParamMap());
             }
         };
 
+        List<FileOutConfig> focList = new ArrayList<>();
+        focList.add(new FileOutConfig("/templates/mapper.xml.ftl"){
+            @Override
+            public String outputFile(TableInfo tableInfo) {
+                // 自定义输出文件名 ， 如果你 Entity 设置了前后缀、此处注意 xml 的名称会跟着发生变化！！
+                return zipFilePath + "/src/main/resources/mapper/" + tableInfo.getEntityName() + "Mapper" + StringPool.DOT_XML;
+            }
+        });
+        cfg.setFileOutConfigList(focList);
         return cfg;
     }
 

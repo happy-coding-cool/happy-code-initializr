@@ -4,6 +4,8 @@ import  cool.happycoding.code.base.pojo.Form;
 import cool.happycoding.code.initializr.generator.Config;
 import lombok.Data;
 
+import java.util.List;
+
 /**
  * @ClassName Database
  * @Description 数据库配置
@@ -18,6 +20,8 @@ public class Database extends Form {
     private String username;
     private String password;
     private String schema;
+
+    private List<String> tables;
 
     /**
      * 生成mysql 连接 url
