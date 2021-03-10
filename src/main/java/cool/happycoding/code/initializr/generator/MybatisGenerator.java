@@ -9,6 +9,8 @@ import cool.happycoding.code.initializr.dto.form.Author;
 import cool.happycoding.code.initializr.dto.form.Database;
 import cool.happycoding.code.initializr.dto.form.HappyCodeForm;
 import cool.happycoding.code.initializr.dto.form.ProjectMetadata;
+import cool.happycoding.code.initializr.mybatis.HappyFreemarkerTemplateEngine;
+import cool.happycoding.code.initializr.mybatis.HappyTemplateConfig;
 
 /**
  * <p>MybatisGenerator.java</P>
@@ -43,11 +45,11 @@ public class MybatisGenerator implements Generator{
                 // 自定义配置
                 .setCfg(generationConfiguration.injectionConfig())
                 // entity/service/controller代码模版配置
-                .setTemplate(new TemplateConfig())
+                .setTemplate(new HappyTemplateConfig())
                 // 数据库表生成设置
                 .setStrategy(strategyConfig(database))
                 // 模版引擎设置
-                .setTemplateEngine(new FreemarkerTemplateEngine())
+                .setTemplateEngine(new HappyFreemarkerTemplateEngine())
                 ;
     }
 
