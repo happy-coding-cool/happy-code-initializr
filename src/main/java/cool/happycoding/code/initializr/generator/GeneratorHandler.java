@@ -4,7 +4,6 @@ import cn.hutool.core.io.FileUtil;
 import cn.hutool.core.util.ZipUtil;
 import cool.happycoding.code.initializr.dto.form.HappyCodeForm;
 import cool.happycoding.code.initializr.generator.build.BuildGenerator;
-import cool.happycoding.code.initializr.utils.GenerateUtils;
 import freemarker.template.Configuration;
 
 import java.io.File;
@@ -25,7 +24,7 @@ public class GeneratorHandler {
                 = GenerationConfiguration.of(configuration, happyCodeForm);
         generationConfiguration.setZipFilePath(file.getAbsolutePath());
         new GeneratorChain()
-                 // 生成readme
+                 // 生成readme、help
                 .next(new MarkdownGenerator(generationConfiguration))
                  // build配置
                 .next(new BuildGenerator(generationConfiguration))

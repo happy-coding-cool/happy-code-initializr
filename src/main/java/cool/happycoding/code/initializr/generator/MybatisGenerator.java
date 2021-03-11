@@ -1,10 +1,12 @@
 package cool.happycoding.code.initializr.generator;
 
 import com.baomidou.mybatisplus.generator.AutoGenerator;
-import com.baomidou.mybatisplus.generator.config.*;
+import com.baomidou.mybatisplus.generator.config.DataSourceConfig;
+import com.baomidou.mybatisplus.generator.config.GlobalConfig;
+import com.baomidou.mybatisplus.generator.config.PackageConfig;
+import com.baomidou.mybatisplus.generator.config.StrategyConfig;
 import com.baomidou.mybatisplus.generator.config.rules.DateType;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
-import com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;
 import cool.happycoding.code.initializr.dto.form.Author;
 import cool.happycoding.code.initializr.dto.form.Database;
 import cool.happycoding.code.initializr.dto.form.HappyCodeForm;
@@ -84,7 +86,7 @@ public class MybatisGenerator implements Generator{
                         .setServiceImpl("service.impl")
                         .setEntity("dao.entity")
                         .setMapper("dao.mapper")
-                        .setXml("");
+                        .setXml("src/main/resources/mapper/");
     }
 
 
