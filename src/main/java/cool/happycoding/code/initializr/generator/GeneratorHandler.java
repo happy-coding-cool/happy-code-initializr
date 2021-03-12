@@ -20,20 +20,20 @@ public class GeneratorHandler {
 
     public static File generator(Configuration configuration, HappyCodeForm happyCodeForm){
         File file = ifNotExistsThenCreate(happyCodeForm.getProjectMetadata().getArtifact());
-        GenerationConfiguration generationConfiguration
-                = GenerationConfiguration.of(configuration, happyCodeForm);
-        generationConfiguration.setZipFilePath(file.getAbsolutePath());
+        GenerationConfig generationConfig
+                = GenerationConfig.of(configuration, happyCodeForm);
+        generationConfig.setZipFilePath(file.getAbsolutePath());
         new GeneratorChain()
                  // 生成readme、help
-                .next(new MarkdownGenerator(generationConfiguration))
+                .next(new MarkdownGenerator(generationConfig))
                  // build配置
-                .next(new BuildGenerator(generationConfiguration))
+                .next(new BuildGenerator(generationConfig))
                  // 生成.gitignore
-                .next(new IgnoreGenerator(generationConfiguration))
+                .next(new IgnoreGenerator(generationConfig))
                  // 生成 main app
-                .next(new SrcMainGenerator(generationConfiguration))
+                .next(new SrcMainGenerator(generationConfig))
                  // 生成 test
-                .next(new SrcTestGenerator(generationConfiguration))
+                .next(new SrcTestGenerator(generationConfig))
                 .generator();
 
         // file 文件生成

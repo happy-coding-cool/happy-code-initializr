@@ -6,7 +6,7 @@ import com.baomidou.mybatisplus.generator.config.po.TableInfo;
 import com.baomidou.mybatisplus.generator.config.rules.FileType;
 import com.baomidou.mybatisplus.generator.engine.AbstractTemplateEngine;
 import com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;
-import cool.happycoding.code.initializr.generator.GenerationConfiguration;
+import cool.happycoding.code.initializr.generator.GenerationConfig;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 
@@ -23,10 +23,10 @@ import java.util.Map;
 @Slf4j
 public class HappyFreemarkerTemplateEngine extends FreemarkerTemplateEngine {
 
-    private final GenerationConfiguration generationConfiguration;
+    private final GenerationConfig generationConfig;
 
-    public HappyFreemarkerTemplateEngine(GenerationConfiguration generationConfiguration){
-        this.generationConfiguration = generationConfiguration;
+    public HappyFreemarkerTemplateEngine(GenerationConfig generationConfig){
+        this.generationConfig = generationConfig;
     }
 
     @Override
@@ -143,7 +143,7 @@ public class HappyFreemarkerTemplateEngine extends FreemarkerTemplateEngine {
         }
 
         if (null != tableInfo.getXmlName() && null != pathInfo.get(ConstVal.XML_PATH)) {
-            String xmlFile = String.format((generationConfiguration.getZipFilePath() + File.separator + "src/main/resources/mapper/" + tableInfo.getXmlName() + ConstVal.XML_SUFFIX), entityName);
+            String xmlFile = String.format((generationConfig.getZipFilePath() + File.separator + "src/main/resources/mapper/" + tableInfo.getXmlName() + ConstVal.XML_SUFFIX), entityName);
             if (isCreate(FileType.XML, xmlFile)) {
                 writerFile(objectMap, templateFilePath(template.getXml()), xmlFile);
             }

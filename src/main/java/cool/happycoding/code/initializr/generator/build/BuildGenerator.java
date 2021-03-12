@@ -1,7 +1,7 @@
 package cool.happycoding.code.initializr.generator.build;
 
 import cn.hutool.core.util.StrUtil;
-import cool.happycoding.code.initializr.generator.GenerationConfiguration;
+import cool.happycoding.code.initializr.generator.GenerationConfig;
 import cool.happycoding.code.initializr.generator.Generator;
 
 /**
@@ -15,8 +15,8 @@ public class BuildGenerator implements Generator {
     private final Generator generator;
     private static final String GRADLE_BUILD = "gradle";
 
-    public BuildGenerator(GenerationConfiguration generationConfiguration){
-        this.generator = build(generationConfiguration);
+    public BuildGenerator(GenerationConfig generationConfig){
+        this.generator = build(generationConfig);
     }
 
     @Override
@@ -24,11 +24,11 @@ public class BuildGenerator implements Generator {
         generator.generator();
     }
 
-    private Generator build(GenerationConfiguration generationConfiguration){
-        if (StrUtil.equalsAnyIgnoreCase(GRADLE_BUILD, generationConfiguration.getHappyCodeForm().getBuild())){
-            return new GradleBuildGenerator(generationConfiguration);
+    private Generator build(GenerationConfig generationConfig){
+        if (StrUtil.equalsAnyIgnoreCase(GRADLE_BUILD, generationConfig.getHappyCodeForm().getBuild())){
+            return new GradleBuildGenerator(generationConfig);
         }else{
-            return new MavenBuildGenerator(generationConfiguration);
+            return new MavenBuildGenerator(generationConfig);
         }
     }
 

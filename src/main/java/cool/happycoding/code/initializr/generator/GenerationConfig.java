@@ -12,13 +12,13 @@ import static cn.hutool.core.util.StrUtil.toCamelCase;
 import static cn.hutool.core.util.StrUtil.upperFirst;
 
 /**
- * @ClassName GenerationConfiguration
+ * @ClassName GenerationConfig
  * @Description 代码生成配置
  * @Author lanlanhappy
  * @Date 2020/12/30 8:18 下午
  */
 @Data
-public class GenerationConfiguration implements Config{
+public class GenerationConfig implements Config{
 
     /**
      * 获取 配置
@@ -37,11 +37,11 @@ public class GenerationConfiguration implements Config{
      */
     private String zipFilePath;
 
-    public static GenerationConfiguration of(Configuration configuration, HappyCodeForm happyCodeForm){
-        GenerationConfiguration generationConfiguration = new GenerationConfiguration();
-        generationConfiguration.setConfiguration(configuration);
-        generationConfiguration.setHappyCodeForm(happyCodeForm);
-        return generationConfiguration;
+    public static GenerationConfig of(Configuration configuration, HappyCodeForm happyCodeForm){
+        GenerationConfig generationConfig = new GenerationConfig();
+        generationConfig.setConfiguration(configuration);
+        generationConfig.setHappyCodeForm(happyCodeForm);
+        return generationConfig;
     }
 
     /**

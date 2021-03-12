@@ -10,15 +10,15 @@ import static cool.happycoding.code.initializr.generator.GeneratorPath.GenerateF
  */
 public class IgnoreGenerator implements Generator{
 
-    private final GenerationConfiguration generationConfiguration;
+    private final GenerationConfig generationConfig;
 
-    public IgnoreGenerator(GenerationConfiguration generationConfiguration){
-        this.generationConfiguration = generationConfiguration;
+    public IgnoreGenerator(GenerationConfig generationConfig){
+        this.generationConfig = generationConfig;
     }
 
     @Override
     public void generator() {
         // 生成ignore
-        new BaseGenerator(generationConfiguration, IGNORE_FILE).generator();
+        new BaseGenerator(generationConfig, IGNORE_FILE).generator();
     }
 }

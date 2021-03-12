@@ -11,17 +11,17 @@ import static cool.happycoding.code.initializr.generator.GeneratorPath.GenerateF
  */
 public class MarkdownGenerator implements Generator{
 
-    private final GenerationConfiguration generationConfiguration;
+    private final GenerationConfig generationConfig;
 
-    public MarkdownGenerator(GenerationConfiguration generationConfiguration){
-        this.generationConfiguration = generationConfiguration;
+    public MarkdownGenerator(GenerationConfig generationConfig){
+        this.generationConfig = generationConfig;
     }
 
     @Override
     public void generator() {
         // 生成readme.md
-        new BaseGenerator(generationConfiguration, README_FILE).generator();
+        new BaseGenerator(generationConfig, README_FILE).generator();
         // 生成help.md
-        new BaseGenerator(generationConfiguration, HELP_FILE).generator();
+        new BaseGenerator(generationConfig, HELP_FILE).generator();
     }
 }

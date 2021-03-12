@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.baomidou.mybatisplus.generator.InjectionConfig;
 import com.baomidou.mybatisplus.generator.config.ConstVal;
 import com.baomidou.mybatisplus.generator.config.builder.ConfigBuilder;
-import cool.happycoding.code.initializr.generator.GenerationConfiguration;
+import cool.happycoding.code.initializr.generator.GenerationConfig;
 
 import java.io.File;
 import java.util.Map;
@@ -20,18 +20,18 @@ import static cool.happycoding.code.initializr.mybatis.HappyConstVal.*;
  */
 public class HappyInjectionConfig extends InjectionConfig{
 
-    private final GenerationConfiguration generationConfiguration;
+    private final GenerationConfig generationConfig;
     private final String outPath;
     private final String parent;
 
-    public HappyInjectionConfig(GenerationConfiguration generationConfiguration){
-        this.generationConfiguration = generationConfiguration;
-        this.outPath = generationConfiguration.getZipFilePath() + "/src/main/java";
-        this.parent = generationConfiguration.getHappyCodeForm().getProjectMetadata().getProPackage();
+    public HappyInjectionConfig(GenerationConfig generationConfig){
+        this.generationConfig = generationConfig;
+        this.outPath = generationConfig.getZipFilePath() + "/src/main/java";
+        this.parent = generationConfig.getHappyCodeForm().getProjectMetadata().getProPackage();
     }
     @Override
     public void initMap() {
-        this.setMap(generationConfiguration.buildGenerateParamMap());
+        this.setMap(generationConfig.buildGenerateParamMap());
     }
 
     @Override

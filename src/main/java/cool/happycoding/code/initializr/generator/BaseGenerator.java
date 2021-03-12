@@ -32,14 +32,14 @@ public class BaseGenerator implements Generator{
     private final Map<String, Object> paramMap;
     private final GeneratorPath.GenerateFile generateFile;
 
-    public BaseGenerator(GenerationConfiguration generationConfiguration,
+    public BaseGenerator(GenerationConfig generationConfig,
                          GeneratorPath.GenerateFile generateFile){
 
         this.generateFile = generateFile;
-        this.paramMap = generationConfiguration.buildGenerateParamMap();
-        this.zipFilePath = generationConfiguration.getZipFilePath();
-        this.configuration = generationConfiguration.getConfiguration();
-        this.happyCodeForm = generationConfiguration.getHappyCodeForm();
+        this.paramMap = generationConfig.buildGenerateParamMap();
+        this.zipFilePath = generationConfig.getZipFilePath();
+        this.configuration = generationConfig.getConfiguration();
+        this.happyCodeForm = generationConfig.getHappyCodeForm();
     }
 
     @Override

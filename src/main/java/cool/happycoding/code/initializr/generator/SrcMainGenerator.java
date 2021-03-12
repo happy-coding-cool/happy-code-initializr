@@ -12,21 +12,21 @@ import static cool.happycoding.code.initializr.generator.GeneratorPath.GenerateF
  */
 public class SrcMainGenerator implements Generator{
 
-    private final GenerationConfiguration generationConfiguration;
+    private final GenerationConfig generationConfig;
 
-    public SrcMainGenerator(GenerationConfiguration generationConfiguration){
-        this.generationConfiguration = generationConfiguration;
+    public SrcMainGenerator(GenerationConfig generationConfig){
+        this.generationConfig = generationConfig;
     }
 
     @Override
     public void generator() {
         // main 方法
-        new BaseGenerator(generationConfiguration, GeneratorPath.GenerateFile.APPLICATION_JAVA_FILE).generator();
+        new BaseGenerator(generationConfig, GeneratorPath.GenerateFile.APPLICATION_JAVA_FILE).generator();
         // resources 文件生成
-        new BaseGenerator(generationConfiguration, APPLICATION_FILE).generator();
+        new BaseGenerator(generationConfig, APPLICATION_FILE).generator();
         // 生成
-        if (ObjectUtil.isNotNull(generationConfiguration.getHappyCodeForm().getDatabase())){
-            new MybatisGenerator(generationConfiguration).generator();
+        if (ObjectUtil.isNotNull(generationConfig.getHappyCodeForm().getDatabase())){
+            new MybatisGenerator(generationConfig).generator();
         }
     }
 }

@@ -29,30 +29,30 @@ public class MybatisGenerator implements Generator{
      */
     private static final Boolean IS_FILE_OVERRIDE = true;
 
-    public MybatisGenerator(GenerationConfiguration generationConfiguration){
-        this.autoGenerator = build(generationConfiguration);
+    public MybatisGenerator(GenerationConfig generationConfig){
+        this.autoGenerator = build(generationConfig);
     }
 
-    private AutoGenerator build(GenerationConfiguration generationConfiguration) {
-        HappyCodeForm happyCodeForm = generationConfiguration.getHappyCodeForm();
+    private AutoGenerator build(GenerationConfig generationConfig) {
+        HappyCodeForm happyCodeForm = generationConfig.getHappyCodeForm();
         Database database = happyCodeForm.getDatabase();
         Author author = happyCodeForm.getAuthor();
         ProjectMetadata projectMetadata = happyCodeForm.getProjectMetadata();
         return new AutoGenerator()
                 // 全局配置
-                .setGlobalConfig(globalConfig(author, generationConfiguration.getZipFilePath()))
+                .setGlobalConfig(globalConfig(author, generationConfig.getZipFilePath()))
                 // 数据库配置
                 .setDataSource(dataSourceConfig(database))
                 // 包配置
                 .setPackageInfo(packageConfig(projectMetadata))
                 // 自定义配置
-                .setCfg(new HappyInjectionConfig(generationConfiguration))
+                .setCfg(new HappyInjectionConfig(generationConfig))
                 // entity/service/controller代码模版配置
                 .setTemplate(new HappyTemplateConfig())
                 // 数据库表生成设置
                 .setStrategy(strategyConfig(database))
                 // 模版引擎设置
-                .setTemplateEngine(new HappyFreemarkerTemplateEngine(generationConfiguration))
+                .setTemplateEngine(new HappyFreemarkerTemplateEngine(generationConfig))
                 ;
     }
 

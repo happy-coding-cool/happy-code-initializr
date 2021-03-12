@@ -3,7 +3,7 @@ package cool.happycoding.code.initializr.generator.build;
 import cn.hutool.core.io.FileUtil;
 import cn.hutool.core.util.StrUtil;
 import cool.happycoding.code.initializr.generator.BaseGenerator;
-import cool.happycoding.code.initializr.generator.GenerationConfiguration;
+import cool.happycoding.code.initializr.generator.GenerationConfig;
 import cool.happycoding.code.initializr.generator.Generator;
 import lombok.SneakyThrows;
 import org.springframework.util.ResourceUtils;
@@ -20,10 +20,10 @@ import static cool.happycoding.code.initializr.generator.GeneratorPath.GenerateF
  */
 public class MavenBuildGenerator implements Generator{
 
-    private final GenerationConfiguration generationConfiguration;
+    private final GenerationConfig generationConfig;
 
-    public MavenBuildGenerator(GenerationConfiguration generationConfiguration){
-        this.generationConfiguration = generationConfiguration;
+    public MavenBuildGenerator(GenerationConfig generationConfig){
+        this.generationConfig = generationConfig;
     }
     @SneakyThrows
     @Override
@@ -33,13 +33,13 @@ public class MavenBuildGenerator implements Generator{
         String mvnwCmdPath = "classpath:file/mvn/mvnw.cmd";
         String mvnWrapperPath = "classpath:file/mvn/wrapper";
         // 复制 mvnw mvn.cmd 文件
-        FileUtil.copy(ResourceUtils.getFile(mvnwPath).getAbsolutePath(), generationConfiguration.getZipFilePath(), true);
-        FileUtil.copy(ResourceUtils.getFile(mvnwCmdPath).getAbsolutePath(), generationConfiguration.getZipFilePath(), true);
+        FileUtil.copy(ResourceUtils.getFile(mvnwPath).getAbsolutePath(), generationConfig.getZipFilePath(), true);
+        FileUtil.copy(ResourceUtils.getFile(mvnwCmdPath).getAbsolutePath(), generationConfig.getZipFilePath(), true);
         // 生成.mvn 文件夹 复制 wrapper文件的内容
         FileUtil.copyFilesFromDir(ResourceUtils.getFile(mvnWrapperPath),
                 new File(StrUtil.concat(false,
-                        generationConfiguration.getZipFilePath(),"/.mvn/wrapper")), true);
+                        generationConfig.getZipFilePath(),"/.mvn/wrapper")), true);
         // 生成pom文件
-        new BaseGenerator(generationConfiguration, POM_FILE).generator();
+        new BaseGenerator(generationConfig, POM_FILE).generator();
     }
 }
