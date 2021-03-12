@@ -12,6 +12,7 @@ import cool.happycoding.code.initializr.dto.form.Database;
 import cool.happycoding.code.initializr.dto.form.HappyCodeForm;
 import cool.happycoding.code.initializr.dto.form.ProjectMetadata;
 import cool.happycoding.code.initializr.mybatis.HappyFreemarkerTemplateEngine;
+import cool.happycoding.code.initializr.mybatis.HappyInjectionConfig;
 import cool.happycoding.code.initializr.mybatis.HappyTemplateConfig;
 
 /**
@@ -45,13 +46,13 @@ public class MybatisGenerator implements Generator{
                 // 包配置
                 .setPackageInfo(packageConfig(projectMetadata))
                 // 自定义配置
-                .setCfg(generationConfiguration.injectionConfig())
+                .setCfg(new HappyInjectionConfig(generationConfiguration))
                 // entity/service/controller代码模版配置
                 .setTemplate(new HappyTemplateConfig())
                 // 数据库表生成设置
                 .setStrategy(strategyConfig(database))
                 // 模版引擎设置
-                .setTemplateEngine(new HappyFreemarkerTemplateEngine())
+                .setTemplateEngine(new HappyFreemarkerTemplateEngine(generationConfiguration))
                 ;
     }
 
@@ -86,7 +87,7 @@ public class MybatisGenerator implements Generator{
                         .setServiceImpl("service.impl")
                         .setEntity("dao.entity")
                         .setMapper("dao.mapper")
-                        .setXml("src/main/resources/mapper/");
+                        .setXml("");
     }
 
 
@@ -96,6 +97,7 @@ public class MybatisGenerator implements Generator{
                 .setColumnNaming(NamingStrategy.underline_to_camel)
                 .setEntityLombokModel(true)
                 .setRestControllerStyle(true)
+                .setTablePrefix(database.getTablePrefix().toArray(new String[]{}))
                 .setInclude(database.getTables().toArray(new String[]{}))
                 .setControllerMappingHyphenStyle(true);
     }

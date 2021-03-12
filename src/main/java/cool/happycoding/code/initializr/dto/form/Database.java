@@ -1,5 +1,7 @@
 package cool.happycoding.code.initializr.dto.form;
 
+import cn.hutool.core.collection.CollUtil;
+import com.google.common.collect.Lists;
 import  cool.happycoding.code.base.pojo.Form;
 import cool.happycoding.code.initializr.generator.Config;
 import lombok.Data;
@@ -23,6 +25,8 @@ public class Database extends Form {
 
     private List<String> tables;
 
+    private List<String> tablePrefix;
+
     /**
      * 生成mysql 连接 url
      * @return
@@ -32,5 +36,19 @@ public class Database extends Form {
                 .format(Config.MYSQL_URL, host, port, schema);
     }
 
+    public List<String> getTables() {
+        if(CollUtil.isEmpty(tables)){
+            return Lists.newArrayList();
+        }
+        return this.tables;
+    }
 
+
+    public List<String> getTablePrefix() {
+
+        if(CollUtil.isEmpty(tablePrefix)){
+            return Lists.newArrayList();
+        }
+        return this.tablePrefix;
+    }
 }

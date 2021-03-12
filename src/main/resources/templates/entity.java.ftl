@@ -24,6 +24,7 @@ import lombok.Data;
 @Data
 @TableName("${table.name}")
 public class ${entity} extends BaseEntity {
+
 <#if entitySerialVersionUID>
     private static final long serialVersionUID = 1L;
 </#if>
@@ -42,12 +43,13 @@ public class ${entity} extends BaseEntity {
         <#assign keyPropertyName="${field.propertyName}"/>
     </#if>
     <#if field.comment!?length gt 0>
-        /**
-        * ${field.comment?replace("\r\n"," ")}
-        */
+    /**
+     * ${field.comment?replace("\r\n"," ")}
+     */
     </#if>
     @TableField("${field.name}")
     private ${field.propertyType} ${field.propertyName};
+
     </#if>
 </#list>
 }
