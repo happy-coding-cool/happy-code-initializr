@@ -4,7 +4,7 @@ package ${package.Entity};
     <#if pkg != "java.io.Serializable"
     && pkg != "com.baomidou.mybatisplus.annotation.IdType"
     && pkg != "com.baomidou.mybatisplus.annotation.TableId">
-import ${pkg};
+        import ${pkg};
     </#if>
 </#list>
 import com.baomidou.mybatisplus.annotation.TableField;

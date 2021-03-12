@@ -1,13 +1,16 @@
 package cool.happycoding.code.initializr.mybatis;
 
+import com.baomidou.mybatisplus.core.toolkit.StringPool;
+import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.baomidou.mybatisplus.generator.InjectionConfig;
-import com.baomidou.mybatisplus.generator.config.FileOutConfig;
+import com.baomidou.mybatisplus.generator.config.ConstVal;
 import com.baomidou.mybatisplus.generator.config.builder.ConfigBuilder;
-import com.baomidou.mybatisplus.generator.config.po.TableInfo;
-import com.google.common.collect.Lists;
 import cool.happycoding.code.initializr.generator.GenerationConfiguration;
 
-import java.util.List;
+import java.io.File;
+import java.util.Map;
+
+import static cool.happycoding.code.initializr.mybatis.HappyConstVal.*;
 
 /**
  * <p>HappyInjectionConfig.java</P>
@@ -19,55 +22,48 @@ public class HappyInjectionConfig extends InjectionConfig{
 
     private final GenerationConfiguration generationConfiguration;
     private final String outPath;
+    private final String parent;
 
     public HappyInjectionConfig(GenerationConfiguration generationConfiguration){
         this.generationConfiguration = generationConfiguration;
-        this.outPath = generationConfiguration.getZipFilePath();
-
+        this.outPath = generationConfiguration.getZipFilePath() + "/src/main/java";
+        this.parent = generationConfiguration.getHappyCodeForm().getProjectMetadata().getProPackage();
     }
     @Override
     public void initMap() {
         this.setMap(generationConfiguration.buildGenerateParamMap());
     }
 
-    private List<FileOutConfig> buildFileOutConfig(){
-
-        List<FileOutConfig> fileOutConfigs = Lists.newArrayList();
-        FileOutConfig addFormConfig = new FileOutConfig("/templates/addForm.xml.ftl") {
-            @Override
-            public String outputFile(TableInfo tableInfo) {
-                return outPath+"";
-            }
-        };
-        FileOutConfig qryFormConfig = new FileOutConfig("/templates/qryForm.xml.ftl") {
-            @Override
-            public String outputFile(TableInfo tableInfo) {
-                return outPath+"";
-            }
-        };
-        FileOutConfig qryPageFormConfig = new FileOutConfig("/templates/qryPageForm.xml.ftl") {
-            @Override
-            public String outputFile(TableInfo tableInfo) {
-                return outPath+"";
-            }
-        };
-        FileOutConfig updateFormConfig = new FileOutConfig("/templates/updateForm.xml.ftl") {
-            @Override
-            public String outputFile(TableInfo tableInfo) {
-                return outPath+"";
-            }
-        };
-        fileOutConfigs.add(addFormConfig);
-        fileOutConfigs.add(qryFormConfig);
-        fileOutConfigs.add(qryPageFormConfig);
-        fileOutConfigs.add(updateFormConfig);
-        return fileOutConfigs;
-    }
-
     @Override
     public InjectionConfig setConfig(ConfigBuilder config) {
+        postConfig(config.getPackageInfo(), config.getPathInfo());
         super.setConfig(config);
-        this.setFileOutConfigList(buildFileOutConfig());
         return this;
+    }
+
+    private void postConfig(Map<String, String> packageInfo, Map<String, String> pathInfo){
+        // 添加扩展
+        packageInfo.put(HappyConstVal.ADD_FORM,      parent + ".dto.form");
+        packageInfo.put(HappyConstVal.QRY_FORM,      parent + ".dto.form");
+        packageInfo.put(HappyConstVal.QRY_PAGE_FORM, parent + ".dto.form");
+        packageInfo.put(HappyConstVal.UPDATE_FORM,   parent + ".dto.form");
+        packageInfo.put(HappyConstVal.DTO,           parent + ".dto");
+        // 添加扩展
+        pathInfo.put(ADD_FORM_PATH, joinPath(outPath, packageInfo.get(HappyConstVal.ADD_FORM)));
+        pathInfo.put(QRY_FORM_PATH, joinPath(outPath, packageInfo.get(HappyConstVal.QRY_FORM)));
+        pathInfo.put(QRY_PAGE_FORM_PATH, joinPath(outPath, packageInfo.get(HappyConstVal.QRY_PAGE_FORM)));
+        pathInfo.put(UPDATE_FORM_PATH, joinPath(outPath, packageInfo.get(HappyConstVal.UPDATE_FORM)));
+        pathInfo.put(DTO_PATH, joinPath(outPath, packageInfo.get(HappyConstVal.DTO)));
+    }
+
+    private String joinPath(String parentDir, String packageName) {
+        if (StringUtils.isBlank(parentDir)) {
+            parentDir = System.getProperty(ConstVal.JAVA_TMPDIR);
+        }
+        if (!StringUtils.endsWith(parentDir, File.separator)) {
+            parentDir += File.separator;
+        }
+        packageName = packageName.replaceAll("\\.", StringPool.BACK_SLASH + File.separator);
+        return parentDir + packageName;
     }
 }

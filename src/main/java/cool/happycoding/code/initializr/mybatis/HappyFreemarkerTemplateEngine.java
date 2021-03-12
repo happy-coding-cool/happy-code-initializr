@@ -36,11 +36,14 @@ public class HappyFreemarkerTemplateEngine extends FreemarkerTemplateEngine {
             for (TableInfo tableInfo: tableInfoList) {
                 Map<String, Object> objectMap = getObjectMap(tableInfo);
                 Map<String, String> pathInfo = getConfigBuilder().getPathInfo();
-                TemplateConfig template = getConfigBuilder().getTemplate();
-                outputAddForm();
-                outputQryForm();
-                outputQryPageForm();
-                outputUpdateForm();
+                HappyTemplateConfig template = (HappyTemplateConfig) getConfigBuilder().getTemplate();
+
+                outputAddForm(tableInfo, pathInfo, objectMap, template);
+                outputQryForm(tableInfo, pathInfo, objectMap, template);
+                outputQryPageForm(tableInfo, pathInfo, objectMap, template);
+                outputUpdateForm(tableInfo, pathInfo, objectMap, template);
+                outputDto(tableInfo, pathInfo, objectMap, template);
+
                 outputEntity(tableInfo, pathInfo, objectMap, template);
                 outputController(tableInfo, pathInfo, objectMap, template);
                 outputService(tableInfo, pathInfo, objectMap, template);
@@ -55,29 +58,61 @@ public class HappyFreemarkerTemplateEngine extends FreemarkerTemplateEngine {
     /**
      * 生成 AddForm
      */
-    private void outputAddForm(){
-
+    @SneakyThrows
+    private void outputAddForm(TableInfo tableInfo, Map<String, String> pathInfo, Map<String, Object> objectMap, HappyTemplateConfig template){
+        String entityName = tableInfo.getEntityName();
+        if (null != entityName && null != pathInfo.get(HappyConstVal.ADD_FORM_PATH)) {
+            String outFile = String.format((pathInfo.get(HappyConstVal.ADD_FORM_PATH) + File.separator + "%sAddForm" + suffixJavaOrKt()), entityName);
+            writerFile(objectMap, templateFilePath(template.getAddForm()), outFile);
+        }
     }
 
     /**
      * 生成 QryForm
      */
-    private void outputQryForm(){
-
+    @SneakyThrows
+    private void outputQryForm(TableInfo tableInfo, Map<String, String> pathInfo, Map<String, Object> objectMap, HappyTemplateConfig template){
+        String entityName = tableInfo.getEntityName();
+        if (null != entityName && null != pathInfo.get(HappyConstVal.QRY_FORM_PATH)) {
+            String outFile = String.format((pathInfo.get(HappyConstVal.QRY_FORM_PATH) + File.separator + "%sQryForm" + suffixJavaOrKt()), entityName);
+            writerFile(objectMap, templateFilePath(template.getQryForm()), outFile);
+        }
     }
 
     /**
      * 生成 QryPageForm
      */
-    private void outputQryPageForm(){
-
+    @SneakyThrows
+    private void outputQryPageForm(TableInfo tableInfo, Map<String, String> pathInfo, Map<String, Object> objectMap, HappyTemplateConfig template){
+        String entityName = tableInfo.getEntityName();
+        if (null != entityName && null != pathInfo.get(HappyConstVal.QRY_PAGE_FORM_PATH)) {
+            String outFile = String.format((pathInfo.get(HappyConstVal.QRY_PAGE_FORM_PATH) + File.separator + "%sQryPageForm" + suffixJavaOrKt()), entityName);
+            writerFile(objectMap, templateFilePath(template.getQryPageForm()), outFile);
+        }
     }
 
     /**
      * 生成 UpdateForm
      */
-    private void outputUpdateForm(){
+    @SneakyThrows
+    private void outputUpdateForm(TableInfo tableInfo, Map<String, String> pathInfo, Map<String, Object> objectMap, HappyTemplateConfig template){
+        String entityName = tableInfo.getEntityName();
+        if (null != entityName && null != pathInfo.get(HappyConstVal.UPDATE_FORM_PATH)) {
+            String outFile = String.format((pathInfo.get(HappyConstVal.UPDATE_FORM_PATH) + File.separator + "%sUpdateForm" + suffixJavaOrKt()), entityName);
+            writerFile(objectMap, templateFilePath(template.getUpdateForm()), outFile);
+        }
+    }
 
+    /**
+     * 生成 dto
+     */
+    @SneakyThrows
+    private void outputDto(TableInfo tableInfo, Map<String, String> pathInfo, Map<String, Object> objectMap, HappyTemplateConfig template){
+        String entityName = tableInfo.getEntityName();
+        if (null != entityName && null != pathInfo.get(HappyConstVal.DTO_PATH)) {
+            String outFile = String.format((pathInfo.get(HappyConstVal.DTO_PATH) + File.separator + "%sDto" + suffixJavaOrKt()), entityName);
+            writerFile(objectMap, templateFilePath(template.getDto()), outFile);
+        }
     }
 
     /**
