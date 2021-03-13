@@ -12,15 +12,15 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.Version;
 import cool.happycoding.code.mybatis.base.BaseEntity;
 import lombok.Data;
-/**
-* <p>
-* ${table.comment!}
-* </p>
-*
-* @author ${author}
-* @since ${date}
-*/
 
+/**
+ * <p>
+ * ${table.comment!}
+ * </p>
+ *
+ * @author ${author}
+ * @since ${date}
+ */
 @Data
 @TableName("${table.name}")
 public class ${entity} extends BaseEntity {

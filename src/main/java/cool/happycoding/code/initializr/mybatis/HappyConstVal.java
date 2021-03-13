@@ -13,7 +13,7 @@ public interface HappyConstVal extends ConstVal {
     String ADD_FORM         = "AddForm";
     String QRY_FORM         = "QryForm";
     String QRY_PAGE_FORM    = "QryPageForm";
-    String UPDATE_FORM      = "updateForm";
+    String UPDATE_FORM      = "UpdateForm";
     String DTO              = "Dto";
 
 
