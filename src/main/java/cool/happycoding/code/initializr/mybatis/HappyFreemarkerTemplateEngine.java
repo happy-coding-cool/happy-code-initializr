@@ -1,5 +1,6 @@
 package cool.happycoding.code.initializr.mybatis;
 
+import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.generator.config.ConstVal;
 import com.baomidou.mybatisplus.generator.config.TemplateConfig;
 import com.baomidou.mybatisplus.generator.config.po.TableInfo;
@@ -38,16 +39,17 @@ public class HappyFreemarkerTemplateEngine extends FreemarkerTemplateEngine {
                 Map<String, String> pathInfo = getConfigBuilder().getPathInfo();
                 HappyTemplateConfig template = (HappyTemplateConfig) getConfigBuilder().getTemplate();
 
-                outputAddForm(tableInfo, pathInfo, objectMap, template);
-                outputQryForm(tableInfo, pathInfo, objectMap, template);
-                outputQryPageForm(tableInfo, pathInfo, objectMap, template);
-                outputUpdateForm(tableInfo, pathInfo, objectMap, template);
-                outputDto(tableInfo, pathInfo, objectMap, template);
+                outputAddForm(tableInfo,        pathInfo.get(HappyConstVal.ADD_FORM_PATH), objectMap, template);
+                outputQryForm(tableInfo,        pathInfo.get(HappyConstVal.QRY_FORM_PATH), objectMap, template);
+                outputQryPageForm(tableInfo,    pathInfo.get(HappyConstVal.QRY_PAGE_FORM_PATH), objectMap, template);
+                outputUpdateForm(tableInfo,     pathInfo.get(HappyConstVal.UPDATE_FORM_PATH), objectMap, template);
+                outputDto(tableInfo,            pathInfo.get(HappyConstVal.DTO_PATH), objectMap, template);
 
-                outputEntity(tableInfo, pathInfo, objectMap, template);
-                outputController(tableInfo, pathInfo, objectMap, template);
-                outputService(tableInfo, pathInfo, objectMap, template);
-                outputMapper(tableInfo, pathInfo, objectMap, template);
+                outputService(tableInfo,        pathInfo, objectMap, template);
+                outputEntity(tableInfo,         pathInfo.get(ConstVal.ENTITY_PATH), objectMap, template);
+                outputController(tableInfo,     pathInfo.get(ConstVal.CONTROLLER_PATH), objectMap, template);
+                outputMapper(tableInfo,         pathInfo.get(ConstVal.MAPPER_PATH), objectMap, template);
+                outputMapperXml(tableInfo,      pathInfo.get(ConstVal.XML_PATH), objectMap, template);
             }
         } catch (Exception e) {
             logger.error("无法创建文件，请检查配置信息！", e);
@@ -59,10 +61,11 @@ public class HappyFreemarkerTemplateEngine extends FreemarkerTemplateEngine {
      * 生成 AddForm
      */
     @SneakyThrows
-    private void outputAddForm(TableInfo tableInfo, Map<String, String> pathInfo, Map<String, Object> objectMap, HappyTemplateConfig template){
+    private void outputAddForm(TableInfo tableInfo, String pathInfo, Map<String, Object> objectMap, HappyTemplateConfig template){
         String entityName = tableInfo.getEntityName();
-        if (null != entityName && null != pathInfo.get(HappyConstVal.ADD_FORM_PATH)) {
-            String outFile = String.format((pathInfo.get(HappyConstVal.ADD_FORM_PATH) + File.separator + "%sAddForm" + suffixJavaOrKt()), entityName);
+        if (StrUtil.isNotBlank(entityName)
+                && StrUtil.isNotBlank(pathInfo)) {
+            String outFile = String.format((pathInfo + File.separator + "%sAddForm" + suffixJavaOrKt()), entityName);
             writerFile(objectMap, templateFilePath(template.getAddForm()), outFile);
         }
     }
@@ -71,10 +74,11 @@ public class HappyFreemarkerTemplateEngine extends FreemarkerTemplateEngine {
      * 生成 QryForm
      */
     @SneakyThrows
-    private void outputQryForm(TableInfo tableInfo, Map<String, String> pathInfo, Map<String, Object> objectMap, HappyTemplateConfig template){
+    private void outputQryForm(TableInfo tableInfo, String pathInfo, Map<String, Object> objectMap, HappyTemplateConfig template){
         String entityName = tableInfo.getEntityName();
-        if (null != entityName && null != pathInfo.get(HappyConstVal.QRY_FORM_PATH)) {
-            String outFile = String.format((pathInfo.get(HappyConstVal.QRY_FORM_PATH) + File.separator + "%sQryForm" + suffixJavaOrKt()), entityName);
+        if (StrUtil.isNotBlank(entityName)
+                && StrUtil.isNotBlank(pathInfo)) {
+            String outFile = String.format((pathInfo + File.separator + "%sQryForm" + suffixJavaOrKt()), entityName);
             writerFile(objectMap, templateFilePath(template.getQryForm()), outFile);
         }
     }
@@ -83,10 +87,11 @@ public class HappyFreemarkerTemplateEngine extends FreemarkerTemplateEngine {
      * 生成 QryPageForm
      */
     @SneakyThrows
-    private void outputQryPageForm(TableInfo tableInfo, Map<String, String> pathInfo, Map<String, Object> objectMap, HappyTemplateConfig template){
+    private void outputQryPageForm(TableInfo tableInfo, String pathInfo, Map<String, Object> objectMap, HappyTemplateConfig template){
         String entityName = tableInfo.getEntityName();
-        if (null != entityName && null != pathInfo.get(HappyConstVal.QRY_PAGE_FORM_PATH)) {
-            String outFile = String.format((pathInfo.get(HappyConstVal.QRY_PAGE_FORM_PATH) + File.separator + "%sQryPageForm" + suffixJavaOrKt()), entityName);
+        if (StrUtil.isNotBlank(entityName)
+                && StrUtil.isNotBlank(pathInfo)) {
+            String outFile = String.format((pathInfo + File.separator + "%sQryPageForm" + suffixJavaOrKt()), entityName);
             writerFile(objectMap, templateFilePath(template.getQryPageForm()), outFile);
         }
     }
@@ -95,10 +100,11 @@ public class HappyFreemarkerTemplateEngine extends FreemarkerTemplateEngine {
      * 生成 UpdateForm
      */
     @SneakyThrows
-    private void outputUpdateForm(TableInfo tableInfo, Map<String, String> pathInfo, Map<String, Object> objectMap, HappyTemplateConfig template){
+    private void outputUpdateForm(TableInfo tableInfo, String pathInfo, Map<String, Object> objectMap, HappyTemplateConfig template){
         String entityName = tableInfo.getEntityName();
-        if (null != entityName && null != pathInfo.get(HappyConstVal.UPDATE_FORM_PATH)) {
-            String outFile = String.format((pathInfo.get(HappyConstVal.UPDATE_FORM_PATH) + File.separator + "%sUpdateForm" + suffixJavaOrKt()), entityName);
+        if (StrUtil.isNotBlank(entityName)
+                && StrUtil.isNotBlank(pathInfo)) {
+            String outFile = String.format((pathInfo + File.separator + "%sUpdateForm" + suffixJavaOrKt()), entityName);
             writerFile(objectMap, templateFilePath(template.getUpdateForm()), outFile);
         }
     }
@@ -107,10 +113,11 @@ public class HappyFreemarkerTemplateEngine extends FreemarkerTemplateEngine {
      * 生成 dto
      */
     @SneakyThrows
-    private void outputDto(TableInfo tableInfo, Map<String, String> pathInfo, Map<String, Object> objectMap, HappyTemplateConfig template){
+    private void outputDto(TableInfo tableInfo, String pathInfo, Map<String, Object> objectMap, HappyTemplateConfig template){
         String entityName = tableInfo.getEntityName();
-        if (null != entityName && null != pathInfo.get(HappyConstVal.DTO_PATH)) {
-            String outFile = String.format((pathInfo.get(HappyConstVal.DTO_PATH) + File.separator + "%sDto" + suffixJavaOrKt()), entityName);
+        if (StrUtil.isNotBlank(entityName)
+                && StrUtil.isNotBlank(pathInfo)) {
+            String outFile = String.format((pathInfo + File.separator + "%sDto" + suffixJavaOrKt()), entityName);
             writerFile(objectMap, templateFilePath(template.getDto()), outFile);
         }
     }
@@ -119,10 +126,11 @@ public class HappyFreemarkerTemplateEngine extends FreemarkerTemplateEngine {
      * 生成 UpdateForm
      */
     @SneakyThrows
-    private void outputEntity(TableInfo tableInfo, Map<String, String> pathInfo, Map<String, Object> objectMap, TemplateConfig template){
+    private void outputEntity(TableInfo tableInfo, String pathInfo, Map<String, Object> objectMap, TemplateConfig template){
         String entityName = tableInfo.getEntityName();
-        if (null != entityName && null != pathInfo.get(ConstVal.ENTITY_PATH)) {
-            String entityFile = String.format((pathInfo.get(ConstVal.ENTITY_PATH) + File.separator + "%s" + suffixJavaOrKt()), entityName);
+        if (StrUtil.isNotBlank(entityName)
+                && StrUtil.isNotBlank(pathInfo)) {
+            String entityFile = String.format((pathInfo + File.separator + "%s" + suffixJavaOrKt()), entityName);
             if (isCreate(FileType.ENTITY, entityFile)) {
                 writerFile(objectMap, templateFilePath(template.getEntity(getConfigBuilder().getGlobalConfig().isKotlin())), entityFile);
             }
@@ -133,16 +141,26 @@ public class HappyFreemarkerTemplateEngine extends FreemarkerTemplateEngine {
      * MpMapper.java/MpMapper.xml
      */
     @SneakyThrows
-    private void outputMapper(TableInfo tableInfo, Map<String, String> pathInfo, Map<String, Object> objectMap, TemplateConfig template){
+    private void outputMapper(TableInfo tableInfo, String pathInfo, Map<String, Object> objectMap, TemplateConfig template){
+
         String entityName = tableInfo.getEntityName();
-        if (null != tableInfo.getMapperName() && null != pathInfo.get(ConstVal.MAPPER_PATH)) {
-            String mapperFile = String.format((pathInfo.get(ConstVal.MAPPER_PATH) + File.separator + tableInfo.getMapperName() + suffixJavaOrKt()), entityName);
+        if (null != tableInfo.getMapperName() && null != pathInfo) {
+            String mapperFile = String.format((pathInfo + File.separator + tableInfo.getMapperName() + suffixJavaOrKt()), entityName);
             if (isCreate(FileType.MAPPER, mapperFile)) {
                 writerFile(objectMap, templateFilePath(template.getMapper()), mapperFile);
             }
         }
 
-        if (null != tableInfo.getXmlName() && null != pathInfo.get(ConstVal.XML_PATH)) {
+    }
+
+    /**
+     * MpMapper.xml
+     */
+    @SneakyThrows
+    private void outputMapperXml(TableInfo tableInfo, String pathInfo, Map<String, Object> objectMap, TemplateConfig template){
+
+        String entityName = tableInfo.getEntityName();
+        if (null != tableInfo.getXmlName() && null != pathInfo) {
             String xmlFile = String.format((generationConfig.getZipFilePath() + File.separator + "src/main/resources/mapper/" + tableInfo.getXmlName() + ConstVal.XML_SUFFIX), entityName);
             if (isCreate(FileType.XML, xmlFile)) {
                 writerFile(objectMap, templateFilePath(template.getXml()), xmlFile);
@@ -177,11 +195,11 @@ public class HappyFreemarkerTemplateEngine extends FreemarkerTemplateEngine {
      * Controller.java
      */
     @SneakyThrows
-    private void outputController(TableInfo tableInfo, Map<String, String> pathInfo, Map<String, Object> objectMap, TemplateConfig template){
+    private void outputController(TableInfo tableInfo, String pathInfo, Map<String, Object> objectMap, TemplateConfig template){
         String entityName = tableInfo.getEntityName();
         // MpController.java
-        if (null != tableInfo.getControllerName() && null != pathInfo.get(ConstVal.CONTROLLER_PATH)) {
-            String controllerFile = String.format((pathInfo.get(ConstVal.CONTROLLER_PATH) + File.separator + tableInfo.getControllerName() + suffixJavaOrKt()), entityName);
+        if (null != tableInfo.getControllerName() && null != pathInfo) {
+            String controllerFile = String.format((pathInfo + File.separator + tableInfo.getControllerName() + suffixJavaOrKt()), entityName);
             if (isCreate(FileType.CONTROLLER, controllerFile)) {
                 writerFile(objectMap, templateFilePath(template.getController()), controllerFile);
             }

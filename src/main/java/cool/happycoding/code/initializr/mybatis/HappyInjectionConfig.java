@@ -42,13 +42,15 @@ public class HappyInjectionConfig extends InjectionConfig{
     }
 
     private void postConfig(Map<String, String> packageInfo, Map<String, String> pathInfo){
-        // 添加扩展
+
+        // 添加扩展类对应的package配置
         packageInfo.put(HappyConstVal.ADD_FORM,      parent + ".dto.form");
         packageInfo.put(HappyConstVal.QRY_FORM,      parent + ".dto.form");
         packageInfo.put(HappyConstVal.QRY_PAGE_FORM, parent + ".dto.form");
         packageInfo.put(HappyConstVal.UPDATE_FORM,   parent + ".dto.form");
         packageInfo.put(HappyConstVal.DTO,           parent + ".dto");
-        // 添加扩展
+
+        // 添加扩展类对应的生成路径
         pathInfo.put(ADD_FORM_PATH, joinPath(outPath, packageInfo.get(HappyConstVal.ADD_FORM)));
         pathInfo.put(QRY_FORM_PATH, joinPath(outPath, packageInfo.get(HappyConstVal.QRY_FORM)));
         pathInfo.put(QRY_PAGE_FORM_PATH, joinPath(outPath, packageInfo.get(HappyConstVal.QRY_PAGE_FORM)));
