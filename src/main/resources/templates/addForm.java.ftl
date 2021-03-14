@@ -1,6 +1,14 @@
 package ${package.AddForm};
 
 import cool.happycoding.code.mybatis.base.BaseForm;
+<#list table.importPackages as pkg>
+    <#if pkg != "java.io.Serializable"
+    && pkg != "io.swagger.annotations.ApiModel"
+    && pkg != "io.swagger.annotations.ApiModelProperty"
+    && pkg != "com.baomidou.mybatisplus.annotation.TableName">
+import ${pkg};
+    </#if>
+</#list>
 <#if swagger2>
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
