@@ -1,5 +1,6 @@
 package ${package.ServiceImpl};
 
+import cn.hutool.core.util.ObjectUtil;
 import ${package.Entity}.${entity};
 import ${package.Mapper}.${table.mapperName};
 import ${package.Service}.${table.serviceName};
@@ -8,7 +9,14 @@ import ${package.AddForm}.${entity}AddForm;
 import ${package.QryForm}.${entity}QryForm;
 import ${package.QryPageForm}.${entity}QryPageForm;
 import ${package.UpdateForm}.${entity}UpdateForm;
+import ${package.Dto}.${entity}Dto;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import cool.happycoding.code.base.util.HappyCodeUtil;
+import java.util.List;
 
 /**
  * <p>
@@ -30,7 +38,7 @@ public class ${table.serviceImplName} extends ${superServiceImplClass}<${table.m
      @Override
      public ${entity}Dto get(String id) {
         ${entity} ${entity?uncap_first} = this.getById(id);
-        if(Objects.isNotNull(${entity?uncap_first}){
+        if(ObjectUtil.isNotNull(${entity?uncap_first})){
             return ${entity?uncap_first}.toDTO(${entity}Dto.class);
         }
         return null;
@@ -59,7 +67,7 @@ public class ${table.serviceImplName} extends ${superServiceImplClass}<${table.m
 
      @Override
      public List<${entity}Dto> list(${entity}QryForm ${entity?uncap_first}QryForm) {
-        QueryWrapper<${entity}> queryWrapper = = new QueryWrapper<>();
+        QueryWrapper<${entity}> queryWrapper = new QueryWrapper<>();
         // TODO 构造查询条件
         List<${entity}> ${entity?uncap_first}s = this.list(queryWrapper);
         return HappyCodeUtil.copy(${entity?uncap_first}s, ${entity}Dto.class);
@@ -67,11 +75,11 @@ public class ${table.serviceImplName} extends ${superServiceImplClass}<${table.m
      }
 
      @Override
-     public IPage<${entity}Dto> page(${entity}QueryForm ${entity?uncap_first}PageForm) {
+     public IPage<${entity}Dto> page(${entity}QryPageForm ${entity?uncap_first}QryPageForm) {
          QueryWrapper<${entity}> queryWrapper = new QueryWrapper<>();
          // TODO 构造查询条件
-         return this.page(new Page<>(${entity?uncap_first}PageForm.getCurrent(), ${entity?uncap_first}PageForm.getSize()),
-                    queryWrapper).convert(${entity?uncap_first}->${entity?uncap_first}.toDTO(${entity}DtO.class));
+         return this.page(new Page<>(${entity?uncap_first}QryPageForm.getCurrent(), ${entity?uncap_first}QryPageForm.getSize()),
+                    queryWrapper).convert(${entity?uncap_first}->${entity?uncap_first}.toDTO(${entity}Dto.class));
       }
 
 }

@@ -30,6 +30,10 @@
             <groupId>cool.happycoding</groupId>
             <artifactId>happy-code-starter-swagger</artifactId>
         </dependency>
+        <dependency>
+            <groupId>cool.happycoding</groupId>
+            <artifactId>happy-code-starter-mybatis</artifactId>
+        </dependency>
     </dependencies>
     <build>
         <#noparse><finalName>${project.artifactId}</finalName></#noparse>

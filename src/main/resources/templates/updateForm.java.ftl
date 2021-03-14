@@ -36,10 +36,12 @@ public class ${entity}UpdateForm extends BaseForm {
 <#-- ----------  BEGIN 字段循环遍历  ---------->
 <#list table.fields as field>
 <#-- 以下字段忽略 -->
-    <#if
-    field.propertyName != "createdBy"
-    && field.propertyName != "createdTime"
-    && field.propertyName != "createdById"
+    <#if field.propertyName != "createdBy"
+        && field.propertyName != "createdTime"
+        && field.propertyName != "updatedBy"
+        && field.propertyName != "updatedTime"
+        && field.propertyName != "updatedById"
+        && field.propertyName != "createdById"
     >
     <#if field.comment!?length gt 0>
     @ApiModelProperty(value = "${field.comment?replace("\r\n"," ")}")

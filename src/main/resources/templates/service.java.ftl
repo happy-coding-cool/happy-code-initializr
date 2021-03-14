@@ -6,8 +6,9 @@ import ${package.AddForm}.${entity}AddForm;
 import ${package.QryForm}.${entity}QryForm;
 import ${package.QryPageForm}.${entity}QryPageForm;
 import ${package.UpdateForm}.${entity}UpdateForm;
-import ${package.Entity}.${entity};
 import ${package.Dto}.${entity}Dto;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import java.util.List;
 
 /**
  * <p>
@@ -33,7 +34,7 @@ public interface ${table.serviceName} extends ${superServiceClass}<${entity}> {
     /**
      * 获取${table.comment}
      *
-     * @param ${entity?uncap_first}UpdateForm
+     * @param ${entity?uncap_first}AddForm
      * @return ${entity}Dto
      */
     ${entity}Dto save(${entity}AddForm ${entity?uncap_first}AddForm);
@@ -42,6 +43,7 @@ public interface ${table.serviceName} extends ${superServiceClass}<${entity}> {
      * 更新${table.comment}信息
      *
      * @param ${entity?uncap_first}UpdateForm
+     * @return
      */
     boolean update(${entity}UpdateForm ${entity?uncap_first}UpdateForm);
 
@@ -49,6 +51,7 @@ public interface ${table.serviceName} extends ${superServiceClass}<${entity}> {
      * 根据id删除${table.comment}
      *
      * @param id
+     * @return
      */
     boolean delete(String id);
 
@@ -62,9 +65,9 @@ public interface ${table.serviceName} extends ${superServiceClass}<${entity}> {
 
     /**
      * 查询${table.comment}
-     *
+     * @param ${entity?uncap_first}QryPageForm
      * @return
      */
-    IPage<${entity}Dto> page(${entity}PageForm ${entity?uncap_first}PageForm);
+    IPage<${entity}Dto> page(${entity}QryPageForm ${entity?uncap_first}QryPageForm);
 }
 </#if>

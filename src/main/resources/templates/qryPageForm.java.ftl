@@ -1,6 +1,6 @@
 package ${package.QryPageForm};
 
-import cool.happycoding.code.mybatis.base.PageForm;
+import cool.happycoding.code.base.pojo.PageForm;
 <#list table.importPackages as pkg>
     <#if pkg != "java.io.Serializable"
     && pkg != "io.swagger.annotations.ApiModel"
@@ -26,8 +26,8 @@ import lombok.Data;
  * @since ${date}
  */
 @Data
-@ApiModel(value="${entity}PageForm对象", description="${table.comment!}分页查询")
-public class ${entity}PageForm extends PageForm {
+@ApiModel(value="${entity}QryPageForm对象", description="${table.comment!}分页查询")
+public class ${entity}QryPageForm extends PageForm {
 
 <#if entitySerialVersionUID>
     private static final long serialVersionUID = 1L;
