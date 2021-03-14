@@ -2,11 +2,14 @@ package cool.happycoding.code.initializr.generator;
 
 import cn.hutool.core.util.StrUtil;
 import com.google.common.collect.Maps;
+import cool.happycoding.code.base.util.DateUtils;
+import cool.happycoding.code.initializr.dto.form.Dependency;
 import cool.happycoding.code.initializr.dto.form.HappyCodeForm;
 import freemarker.template.Configuration;
 import lombok.Data;
 
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import static cn.hutool.core.util.StrUtil.toCamelCase;
 import static cn.hutool.core.util.StrUtil.upperFirst;
@@ -49,11 +52,20 @@ public class GenerationConfig implements Config{
      * @return
      */
     public Map<String, Object> buildGenerateParamMap(){
+
         Map<String, Object> paramMap = Maps.newHashMap();
         paramMap.put("author", happyCodeForm.getAuthor());
+        paramMap.put("date", DateUtils.now());
         paramMap.put("happyCodeVersion", happyCodeForm.getHappyCodeVersion());
         paramMap.put("projectMetadata", happyCodeForm.getProjectMetadata());
         paramMap.put("artifactToCamelCase", upperFirst(toCamelCase(StrUtil.replaceChars(happyCodeForm.getProjectMetadata().getArtifact(), "-","_"))));
+        // 依赖校验
+        paramMap.putAll(
+                Dependencies.checkEnable(
+                        happyCodeForm.getDependencies()
+                                .stream()
+                                .map(Dependency::getDependency)
+                                .collect(Collectors.toList())));
         return paramMap;
     }
 

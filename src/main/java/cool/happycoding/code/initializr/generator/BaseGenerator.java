@@ -57,7 +57,7 @@ public class BaseGenerator implements Generator{
                              String.format(generateFile.getFilePath(),
                                      formatArgs.toArray()))) {
             configuration.getTemplate(generateFile.getTemplatePath())
-                    .process(paramMap,new OutputStreamWriter(outputStream, StandardCharsets.UTF_8.name()));
+                    .process(paramMap, new OutputStreamWriter(outputStream, StandardCharsets.UTF_8.name()));
         }catch (Exception exception){
             log.error("error: {}" + exception.getMessage(), exception);
             throw new BizException(INTERNAL_SYSTEM_ERROR);

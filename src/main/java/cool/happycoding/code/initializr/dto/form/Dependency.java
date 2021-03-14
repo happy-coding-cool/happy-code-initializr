@@ -4,7 +4,7 @@ import cool.happycoding.code.base.pojo.Form;
 import lombok.Data;
 
 /**
- * @ClassName Dependency
+ * @ClassName Dependencies
  * @Description 依赖
  * @Author lanlanhappy
  * @Date 2020/12/28 10:13 下午

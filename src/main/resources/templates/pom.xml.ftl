@@ -17,8 +17,8 @@
     <description>${projectMetadata.description}</description>
 
     <properties>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.source>${happyCodeVersion}</maven.compiler.source>
+        <maven.compiler.target>${happyCodeVersion}</maven.compiler.target>
     </properties>
 
     <dependencies>
@@ -32,8 +32,30 @@
         </dependency>
         <dependency>
             <groupId>cool.happycoding</groupId>
+            <artifactId>happy-code-starter-user</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>cool.happycoding</groupId>
+            <artifactId>happy-code-starter-log</artifactId>
+        </dependency>
+        <#if enableMybatisPlus>
+        <dependency>
+            <groupId>cool.happycoding</groupId>
             <artifactId>happy-code-starter-mybatis</artifactId>
         </dependency>
+        </#if>
+        <#if enableJetCache>
+        <dependency>
+            <groupId>cool.happycoding</groupId>
+            <artifactId>happy-code-starter-cache</artifactId>
+        </dependency>
+        </#if>
+        <#if enableRocketMQ>
+        <dependency>
+            <groupId>cool.happycoding</groupId>
+            <artifactId>happy-code-starter-cache</artifactId>
+        </dependency>
+        </#if>
     </dependencies>
     <build>
         <#noparse><finalName>${project.artifactId}</finalName></#noparse>
