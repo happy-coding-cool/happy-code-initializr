@@ -1,0 +1,123 @@
+html{
+    font-size: 10px;
+}
+body{
+    margin: 0;
+    font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+}
+.el-header, .el-footer {
+    background-color: #B3C0D1;
+    color: #333;
+    text-align: center;
+    line-height: 60px;
+}
+
+.el-aside {
+    background-color: #D3DCE6;
+    color: #333;
+    text-align: center;
+    line-height: 200px;
+}
+
+.el-main {
+    background-color: #FFFFFF;
+    color: #333;
+    text-align: center;
+    line-height: 160px;
+    position: relative;
+    font-size: 14px;
+}
+
+body > .el-container {
+    margin-bottom: 40px;
+}
+
+.el-container:nth-child(5) .el-aside,
+.el-container:nth-child(6) .el-aside {
+    line-height: 260px;
+}
+
+.el-container:nth-child(7) .el-aside {
+    line-height: 320px;
+}
+
+.el-main{
+    margin: 0 auto;
+    min-height: 100vh;
+    padding: 0 30px;
+    max-width: 1680px;
+    line-height: 1.65;
+    text-align: left;
+}
+.logo{
+    max-width: 320px;
+    padding: 2rem 0;
+}
+.el-form-item__label,.label{
+    font-weight: bold;
+}
+.el-radio{
+    padding: 6px;
+}
+.el-form--label-separate .el-form-item__label, .el-form--label-separate .el-form-item__content{
+    display: block;
+    width: 100%!important;
+    margin-left: 0!important;
+}
+.el-form-item{
+    margin-bottom: 10px;
+}
+.el-input__inner{
+    display: block;
+    border: 0;
+    outline: none;
+    border-bottom: 3px solid #000;
+    line-height: 16px;
+    font-family: "Metropolis",Arial,sans-serif;
+    font-size: 15px;
+    box-sizing: border-box;
+    background-clip: padding-box;
+    width: 100%;
+    padding: 0.35rem 0 0.55rem;
+    border-radius: 0;
+    background: #fff;
+    font-weight: 300;
+}
+.el-form--item-sets .el-form-item__label{
+    min-width: 120px;
+}
+.el-form--item-sets .el-form-item__content{
+    margin-left: 120px!important;
+}
+.el-form--button-bar{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    background: #ecf2f2;
+    padding: 20px 0.5rem;
+    margin: 0 auto;
+    max-width: 1516px;
+}
+.el-form--button-bar .button-content{
+    font-weight: bold;
+}
+.el-form--button-bar .button-content span:first-child{
+    padding-right: 10px;
+}
+.dependency--no-result{
+    padding: 1rem 0;
+    font-style: italic;
+}
+.ul.dependencies-list{
+    margin: 0;
+    padding: 0;
+    padding-bottom: 2rem;
+}
+ul.dependencies-list li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border-bottom: 1px solid #dce8e8;
+}
