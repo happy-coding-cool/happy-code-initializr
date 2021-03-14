@@ -2,8 +2,6 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <!-- import CSS -->
-    <!-- import CSS -->
     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
     <link rel="stylesheet" href="css/index.css">
 </head>
@@ -24,7 +22,7 @@
                             <el-form ref="form" :model="form" label-width="80px">
                                 <div class="el-row">
                                     <div class="el-col el-col-12 el-form--label-left el-form--label-separate">
-                                        <el-form-item label="Project">
+                                        <el-form-item label="项目构建方式">
                                             <el-radio-group v-model="form.project">
                                                 <el-radio label="Maven Project"></el-radio>
                                                 <el-radio label="Gradle Project"></el-radio>
@@ -32,23 +30,17 @@
                                         </el-form-item>
                                     </div>
                                     <div class="el-col el-col-12 el-form--label-left el-form--label-separate">
-                                        <el-form-item label="Language">
+                                        <el-form-item label="开发语言">
                                             <el-radio-group v-model="form.language">
                                                 <el-radio label="Java"></el-radio>
-                                                <el-radio label="Kotlin"></el-radio>
-                                                <el-radio label="Groovy"></el-radio>
                                             </el-radio-group>
                                         </el-form-item>
                                     </div>
                                 </div>
-                                <el-form-item label="Spring Boot" class="el-form--label-left el-form--label-separate">
-                                    <el-radio-group v-model="form.springBoot">
-                                        <el-radio label="2.5.0 (SNAPSHOT)"></el-radio>
-                                        <el-radio label="2.5.0 (M2)"></el-radio>
-                                        <el-radio label="2.4.4 (SNAPSHOT)"></el-radio>
-                                        <el-radio label="2.4.3"></el-radio>
-                                        <el-radio label="2.3.10 (SNAPSHOT)"></el-radio>
-                                        <el-radio label="2.3.9"></el-radio>
+                                <el-form-item label="Happy code" class="el-form--label-left el-form--label-separate">
+                                    <el-radio-group v-model="form.happyCode">
+                                        <el-radio label="1.0.1-SNAPSHOT"></el-radio>
+                                        <el-radio label="1.0.0.RELEASE"></el-radio>
                                     </el-radio-group>
                                 </el-form-item>
                                 <div class="el-form--label-left el-form--label-separate">
@@ -70,17 +62,11 @@
                                     <el-form-item label="Package name">
                                         <el-input v-model="form.packageName"></el-input>
                                     </el-form-item>
-                                    <el-form-item label="Packaging">
-                                        <el-radio-group v-model="form.packaging">
-                                            <el-radio label="Jar"></el-radio>
-                                            <el-radio label="War"></el-radio>
-                                        </el-radio-group>
-                                    </el-form-item>
                                     <el-form-item label="Java">
                                         <el-radio-group v-model="form.java">
                                             <el-radio label="15"></el-radio>
                                             <el-radio label="11"></el-radio>
-                                            <el-radio label="8"></el-radio>
+                                            <el-radio label="1.8"></el-radio>
                                         </el-radio-group>
                                     </el-form-item>
                                 </div>
@@ -99,19 +85,13 @@
                                     <el-col :span="12"><el-button><span class="button-content" tabindex="-1"><span>Add <span class="desktop-only">dependencies</span>...</span><span class="secondary desktop-only">⌘ + b</span></span></el-button></el-col>
                                 </el-row>
                                 <el-divider></el-divider>
-
-
-
                             </div>
-
                             <div class="dependency--no-result">No dependency selected</div>
                             <ul class="dependency--results">
                                 <li class="dependency--item">
                                     <div><strong>Spring Boot DevTools</strong></div>
                                 </li>
                             </ul>
-
-
                         </div>
                     </div>
                 </div>
