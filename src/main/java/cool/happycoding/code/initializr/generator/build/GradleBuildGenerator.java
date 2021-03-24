@@ -36,7 +36,7 @@ public class GradleBuildGenerator implements Generator {
         // 复制 gradlew gradlew.bat 文件
         FileUtil.copy(ResourceUtils.getFile(gradlewPath).getAbsolutePath(), generationConfig.getZipFilePath(), true);
         FileUtil.copy(ResourceUtils.getFile(gradlewCmdPath).getAbsolutePath(), generationConfig.getZipFilePath(), true);
-        // 生成.mvn 文件夹 复制 wrapper文件的内容
+        // 生成.gradle 文件夹 复制 wrapper文件的内容
         FileUtil.copyFilesFromDir(ResourceUtils.getFile(gradleWrapperPath),
                 new File(StrUtil.concat(false,
                         generationConfig.getZipFilePath(),"/.gradle/wrapper")), true);
