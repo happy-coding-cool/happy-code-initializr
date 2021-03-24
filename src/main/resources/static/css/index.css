@@ -1,6 +1,20 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+}
+
 html{
     font-size: 10px;
 }
+
 body{
     margin: 0;
     font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
@@ -51,7 +65,7 @@ body > .el-container {
 }
 .logo{
     max-width: 320px;
-    padding: 2rem 0;
+    padding: 2rem 0 0 0;
 }
 .el-form-item__label,.label{
     font-weight: bold;
@@ -106,6 +120,10 @@ body > .el-container {
 .el-form--button-bar .button-content span:first-child{
     padding-right: 10px;
 }
+
+.el-divider--horizontal{
+    margin: 5px 0 24px 0;
+}
 .dependency--no-result{
     padding: 1rem 0;
     font-style: italic;
@@ -120,4 +138,14 @@ ul.dependencies-list li {
     padding: 0;
     list-style: none;
     border-bottom: 1px solid #dce8e8;
+}
+
+.logo-content{
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    background-image: url("../images/icon.jpg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 100% 100%;
 }

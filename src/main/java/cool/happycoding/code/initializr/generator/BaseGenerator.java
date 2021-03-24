@@ -3,6 +3,7 @@ package cool.happycoding.code.initializr.generator;
 import cn.hutool.core.io.FileUtil;
 import com.google.common.collect.Lists;
 import cool.happycoding.code.base.exception.BizException;
+import cool.happycoding.code.base.exception.ExceptionFactory;
 import cool.happycoding.code.initializr.dto.form.HappyCodeForm;
 import cool.happycoding.code.initializr.dto.form.ProjectMetadata;
 import freemarker.template.Configuration;
@@ -60,7 +61,7 @@ public class BaseGenerator implements Generator{
                     .process(paramMap, new OutputStreamWriter(outputStream, StandardCharsets.UTF_8.name()));
         }catch (Exception exception){
             log.error("error: {}" + exception.getMessage(), exception);
-            throw new BizException(INTERNAL_SYSTEM_ERROR);
+            throw ExceptionFactory.exception(INTERNAL_SYSTEM_ERROR);
         }
     }
 

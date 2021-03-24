@@ -9,6 +9,12 @@ public class GeneratorPath {
     public static final String POM_XML_PATH = "%s/pom.xml";
     public static final String POM_XML_FTL_PATH = "templates/pom.xml.ftl";
 
+    public static final String BUILD_GRADLE_PATH = "%s/build.gradle";
+    public static final String BUILD_GRADLE_FTL_PATH = "templates/build.gradle.ftl";
+
+    public static final String SETTINGS_GRADLE_PATH = "%s/settings.gradle";
+    public static final String SETTINGS_GRADLE_FTL_PATH = "templates/settings.gradle.ftl";
+
     public static final String README_PATH = "%s/README.md";
     public static final String README_FTL_PATH = "templates/README.md.ftl";
 
@@ -33,6 +39,11 @@ public class GeneratorPath {
 
         // Pom文件
         POM_FILE(POM_XML_PATH, POM_XML_FTL_PATH),
+
+
+        // gradle
+        BUILD_GRADLE_FILE(BUILD_GRADLE_PATH, BUILD_GRADLE_FTL_PATH),
+        SETTINGS_GRADLE_FILE(SETTINGS_GRADLE_PATH, SETTINGS_GRADLE_FTL_PATH),
 
         // readme
         README_FILE(README_PATH, README_FTL_PATH),

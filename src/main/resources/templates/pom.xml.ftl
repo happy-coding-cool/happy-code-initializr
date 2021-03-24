@@ -17,8 +17,8 @@
     <description>${projectMetadata.description}</description>
 
     <properties>
-        <maven.compiler.source>${happyCodeVersion}</maven.compiler.source>
-        <maven.compiler.target>${happyCodeVersion}</maven.compiler.target>
+        <maven.compiler.source>${projectMetadata.javaVersion}</maven.compiler.source>
+        <maven.compiler.target>${projectMetadata.javaVersion}</maven.compiler.target>
     </properties>
 
     <dependencies>
@@ -53,7 +53,7 @@
         <#if enableRocketMQ>
         <dependency>
             <groupId>cool.happycoding</groupId>
-            <artifactId>happy-code-starter-cache</artifactId>
+            <artifactId>happy-code-starter-mq</artifactId>
         </dependency>
         </#if>
     </dependencies>

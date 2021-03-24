@@ -1,7 +1,10 @@
 package cool.happycoding.code.initializr.dto.form;
 
+import cn.hutool.core.util.StrUtil;
 import cool.happycoding.code.base.pojo.Form;
 import lombok.Data;
+
+import static cool.happycoding.code.initializr.generator.Config.DEFAULT_JDK_VERSION;
 
 /**
  * @ClassName ProjectMetadata
@@ -19,4 +22,8 @@ public class ProjectMetadata extends Form {
     private String  description;
     private String  projectName;
     private String  javaVersion;
+
+    public String getJavaVersion() {
+        return StrUtil.blankToDefault(javaVersion, DEFAULT_JDK_VERSION);
+    }
 }
