@@ -40,7 +40,7 @@ public class GradleBuildGenerator implements Generator {
         FileUtil.copyFilesFromDir(ResourceUtils.getFile(gradleWrapperPath),
                 new File(StrUtil.concat(false,
                         generationConfig.getZipFilePath(),"/.gradle/wrapper")), true);
-        // 生成pom文件
+        // 生成build.gradle/settings.gradle文件
         new BaseGenerator(generationConfig, BUILD_GRADLE_FILE).generator();
         new BaseGenerator(generationConfig, SETTINGS_GRADLE_FILE).generator();
     }
