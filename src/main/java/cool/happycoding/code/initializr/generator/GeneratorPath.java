@@ -31,15 +31,10 @@ public class GeneratorPath {
     public static final String SRC_MAIN_APP_FTL_PATH = "templates/application.java.ftl";
 
 
-
-
-
-
     public enum GenerateFile{
 
         // Pom文件
         POM_FILE(POM_XML_PATH, POM_XML_FTL_PATH),
-
 
         // gradle
         BUILD_GRADLE_FILE(BUILD_GRADLE_PATH, BUILD_GRADLE_FTL_PATH),
