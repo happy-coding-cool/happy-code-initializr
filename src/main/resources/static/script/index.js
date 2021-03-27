@@ -63,11 +63,11 @@ var app = new Vue({
          },
 
          handleSelectionChange: function(val){
-            var tableArr = new Array();
+            var tableSelected = new Array();
             for(i = 0; i < val.length; i++){
-                tableArr[i] = val[i].name;
+                tableSelected[i] = val[i].name;
             }
-            this.happyCodeForm.database.tables = tableArr;
+            this.happyCodeForm.database.tables = tableSelected;
          },
 
          startZip: function(){
