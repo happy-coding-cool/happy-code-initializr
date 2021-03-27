@@ -48,7 +48,7 @@ public class HappyCodeGeneratorController {
             fis.close();
         } catch (Exception e){
             throw new BizException("9999", e.getMessage());
-        }finally {
+        } finally {
             // 删除文件
             FileUtil.del(zipFile);
         }

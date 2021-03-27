@@ -1,146 +1,113 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Happy Code, Happy Coding, Happy Coding Initializr, Spring Boot, Spring Cloud, Spring Cloud Alibaba">
     <title>Happy Coding Initializr</title>
-<!--    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.min.css@8.0.1/normalize.min.css">-->
     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
-    <link rel="stylesheet" href="css/index.css">
-    <link rel="icon" href="images/favicon.ico">
+    <link rel="stylesheet" href="./style/index.css">
+    <link rel="icon" href="./images/favicon.ico">
 </head>
 <body>
 <div id="app">
-    <section class="el-container">
-        <aside class="el-aside" style="width: 200px;">Aside</aside>
-        <section class="el-container">
-            <main class="el-main">
-                <header class="header">
-                    <h1 class="logo">
-                     <a href="http://www.happycoding.cool">
-                        <span class="logo-content" tabindex="-1"></span>Happy Coding Initializr</a>
-                    </h1>
-                </header>
-                <el-divider></el-divider>
-                <div class="el-row">
-                    <div class="el-col el-col-12">
-                        <div class="grid-content bg-purple">
-                            <el-form ref="form" :model="form" label-width="80px">
-                                <div class="el-row">
-                                    <div class="el-col el-col-12 el-form--label-left el-form--label-separate">
-                                        <el-form-item label="项目构建方式">
-                                            <el-radio-group v-model="form.project">
-                                                <el-radio label="Maven Project"></el-radio>
-                                                <el-radio label="Gradle Project"></el-radio>
-                                            </el-radio-group>
-                                        </el-form-item>
-                                    </div>
-                                    <div class="el-col el-col-12 el-form--label-left el-form--label-separate">
-                                        <el-form-item label="开发语言">
-                                            <el-radio-group v-model="form.language">
-                                                <el-radio label="Java"></el-radio>
-                                            </el-radio-group>
-                                        </el-form-item>
-                                    </div>
-                                </div>
-                                <el-form-item label="Happy Code版本" class="el-form--label-left el-form--label-separate">
-                                    <el-radio-group v-model="form.happyCode">
-                                        <el-radio label="1.0.1-SNAPSHOT"></el-radio>
-                                        <el-radio label="1.0.0.RELEASE"></el-radio>
-                                    </el-radio-group>
-                                </el-form-item>
-                                <div class="el-form--label-left el-form--label-separate">
-                                    <label class="el-form-item__label">项目基本信息</label>
-                                </div>
-                                <div class="el-form--item-sets">
-                                    <el-form-item label="Group">
-                                        <el-input v-model="form.group"></el-input>
-                                    </el-form-item>
-                                    <el-form-item label="Artifact">
-                                        <el-input v-model="form.artifact"></el-input>
-                                    </el-form-item>
-                                    <el-form-item label="Name">
-                                        <el-input v-model="form.name"></el-input>
-                                    </el-form-item>
-                                    <el-form-item label="Description">
-                                        <el-input v-model="form.description"></el-input>
-                                    </el-form-item>
-                                    <el-form-item label="Package name">
-                                        <el-input v-model="form.packageName"></el-input>
-                                    </el-form-item>
-                                    <el-form-item label="JDK版本">
-                                        <el-radio-group v-model="form.java">
-                                            <el-radio label="15"></el-radio>
-                                            <el-radio label="11"></el-radio>
-                                            <el-radio label="8"></el-radio>
-                                        </el-radio-group>
-                                    </el-form-item>
-                                </div>
-                                <el-form-item class="el-form--button-bar">
-                                    <el-button  @click="onSubmit"><span class="button-content" tabindex="-1"><span>Generate</span><span class="secondary desktop-only">⌘ + ⏎</span></span></el-button>
-                                    <el-button  @click="onSubmit"><span class="button-content" tabindex="-1"><span>Explore</span><span class="secondary desktop-only">Ctrl + Space</span></span></el-button>
-                                </el-form-item>
-                            </el-form>
-                        </div>
-                    </div>
-                    <div class="el-col el-col-12">
-                        <div class="grid-content bg-purple-light">
-                            <div class="dependency--header">
-                                <el-row>
-                                    <el-col :span="12"><span class="label">Dependencies</span></el-col>
-                                    <el-col :span="12"><el-button><span class="button-content" tabindex="-1"><span>Add <span class="desktop-only">dependencies</span>...</span><span class="secondary desktop-only">⌘ + b</span></span></el-button></el-col>
-                                </el-row>
-                                <el-divider></el-divider>
-                            </div>
-                            <div class="dependency--no-result">No dependency selected</div>
-                            <ul class="dependency--results">
-                                <li class="dependency--item">
-                                    <div><strong>Spring Boot DevTools</strong></div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </main>
-        </section>
-    </section>
+    <el-container>
+        <el-header>
+            <div class="header-log"><img src="./images/cover-logo.jpeg"> <span>happy coding</span> </div>
+            <div class="header-index">
+                <ul>
+                    <li><a href="#">文档</a></li>
+                    <li><a href="#">Github</a></li>
+                    <li><a href="#">博客</a></li>
+                </ul>
+            </div>
+        </el-header>
+        <div style="margin: 10px;"></div>
+        <el-form label-width="160px" :model="happyCodeForm" label-position="right">
+            <el-form-item label="项目构建方式" >
+                <el-radio-group v-model="happyCodeForm.build">
+                    <el-radio label="maven">Maven Project</el-radio>
+                    <el-radio label="gradle">Gradle Project</el-radio>
+                </el-radio-group>
+            </el-form-item>
+            <el-form-item label="Happy Code版本" >
+                <el-radio-group v-model="happyCodeForm.happyCodeVersion">
+                    <el-radio label="1.0.1.RELEASE">1.0.1.RELEASE</el-radio>
+                </el-radio-group>
+            </el-form-item>
+            <el-form-item label="项目基本信息">
+                <label class="title">Group</label><el-input v-model="happyCodeForm.projectMetadata.group" placeholder="Group"></el-input>
+                <label class="title">Artifact</label><el-input  v-model="happyCodeForm.projectMetadata.artifact" placeholder="Artifact"></el-input>
+                <label class="title">name</label><el-input v-model="happyCodeForm.projectMetadata.name" placeholder="name"></el-input>
+                <el-collapse v-model="activeProject">
+                    <el-collapse-item title="高级选项" name="1">
+                        <label class="title">Description</label><el-input v-model="happyCodeForm.projectMetadata.description" placeholder="Description"></el-input>
+                        <label class="title">Package name</label><el-input v-model="happyCodeForm.projectMetadata.proPackage" placeholder="Package name"></el-input>
+                        <label class="title">author</label><el-input v-model="happyCodeForm.author.name" placeholder="Author"></el-input>
+                        <label class="title">email</label><el-input  v-model="happyCodeForm.author.email" placeholder="Email"></el-input>
+                        <label class="title">Java版本</label>
+                        <el-radio-group v-model="happyCodeForm.projectMetadata.javaVersion">
+                            <el-radio label="1.8">8</el-radio>
+                            <el-radio label="11">11</el-radio>
+                            <el-radio label="15">15</el-radio>
+                        </el-radio-group>
+                    </el-collapse-item>
+                </el-collapse>
+            </el-form-item>
+            <el-form-item label="数据库配置">
+                <el-collapse class="db-settings">
+                    <el-collapse-item title="数据库配置" name="1">
+                        <label class="title">host</label><el-input v-model="happyCodeForm.database.host"></el-input>
+                        <label class="title">port</label><el-input v-model="happyCodeForm.database.port"></el-input>
+                        <label class="title">username</label><el-input v-model="happyCodeForm.database.username"></el-input>
+                        <label class="title">password</label><el-input v-model="happyCodeForm.database.password"></el-input>
+                        <label class="title">schema</label><el-input v-model="happyCodeForm.database.schema"></el-input>
+                        <label class="title">tablePrefix <el-tooltip class="item" effect="light" content="多个前缀逗号分割" placement="right-start">
+                            <i class="el-icon-question"></i>
+                        </el-tooltip></label><el-input v-model="happyCodeForm.database.tablePrefix"></el-input>
+                        <el-button icon="el-icon-thumb" class= "search-db-table" @click="table = true" type="info" plain>
+                            选择表信息
+                        </el-button>
+                    </el-collapse-item>
+                </el-collapse>
+            </el-form-item>
+            <el-drawer
+                    title="库表信息"
+                    :visible.sync="table"
+                    :direction="direction"
+                    size=35%>
+                <template>
+                    <el-table
+                            ref="multipleTable"
+                            :data="dbTableDatas"
+                            style="width: 100%">
+                        <el-table-column
+                                type="selection"
+                                width="55">
+                        </el-table-column>
+                        <el-table-column
+                                label="表名"
+                                prop="tableName">
+                        </el-table-column>
+                        <el-table-column
+                                label="描述"
+                                prop="tableDesc">
+                        </el-table-column>
+                    </el-table>
+                </template>
+            </el-drawer>
+        </el-form>
+        <el-footer>
+            <div class="footer-copyright">© 2020-2021 happycoding.cool<br>happycoding is powered by<br><span><a href="http://www.happycoding.cool" target="_blank">happycoding.cool</a></span></div>
+            <div class="footer-download"><el-button @click="startZip" type="primary"  plain>获取代码<span class="desktop-only">- ⌘ + ⏎</span></el-button><el-button type="info" plain>预览代码<span class="desktop-only">- Ctrl + Space</span></el-button></div>
+        </el-footer>
+    </el-container>
 </div>
 </body>
 <!-- import Vue before Element -->
-<script src="https://unpkg.com/vue/dist/vue.js"></script>
-<!-- import JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="https://unpkg.com/element-ui/lib/index.js"></script>
-<!--<script src="js/index.js"></script>-->
-<script>
-    /* new Vue({
-      el: '#app',
-      data: function() {
-        return { visible: false }
-      }
-    }) */
-    var Main = {
-      el: '#app',
-      data() {
-        return {
-          form: {
-            group: '',
-            artifact: '',
-            name: '',
-            description: '',
-            packageName: '',
-            type: [],
-            resource: '',
-            desc: ''
-          }
-        }
-      },
-      methods: {
-        onSubmit() {
-          console.log('submit!');
-        }
-      }
-    }
-  var Ctor = Vue.extend(Main)
-  new Ctor().$mount('#app')
-  </script>
+<script src="script/index.js"></script>
 </html>

@@ -20,7 +20,6 @@ public class ProjectMetadata extends Form {
     private String  name;
     private String  proPackage;
     private String  description;
-    private String  projectName;
     private String  javaVersion;
 
     public String getJavaVersion() {

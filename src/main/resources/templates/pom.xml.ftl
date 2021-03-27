@@ -13,7 +13,7 @@
     <artifactId>${projectMetadata.artifact}</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
-    <name>${projectMetadata.projectName}</name>
+    <name>${projectMetadata.name}</name>
     <description>${projectMetadata.description}</description>
 
     <properties>

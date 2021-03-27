@@ -6,7 +6,7 @@ happy:
     swagger:
       <#noparse>group: ${spring.application.name}</#noparse>
       base-package: ${projectMetadata.proPackage}
-      title: ${projectMetadata.projectName}
+      title: ${projectMetadata.name}
       description: ${projectMetadata.description}
       version: 1.0
       contact:
