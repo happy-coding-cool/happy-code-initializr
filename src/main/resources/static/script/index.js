@@ -38,7 +38,8 @@ var app = new Vue({
                   username: "root",
                   password: "123456",
                   schema: "happy-demo",
-                  tablePrefix: "h_"
+                  tablePrefix: "h_",
+                  tables:[]
               }
           }
     },
@@ -56,10 +57,17 @@ var app = new Vue({
                     that.errorNotify(response.data.resultCode, response.data.resultMessage);
                     that.tableData = []
                 }
-                console.log("options: ", that.options);
             }).catch(function(err) {
                 console.log(err);
             })
+         },
+
+         handleSelectionChange: function(val){
+            var tableArr = new Array();
+            for(i = 0; i < val.length; i++){
+                tableArr[i] = val[i].name;
+            }
+            this.happyCodeForm.database.tables = tableArr;
          },
 
          startZip: function(){
@@ -106,6 +114,8 @@ var app = new Vue({
              dom.parentNode.removeChild(dom);
              window.URL.revokeObjectURL(url);
          },
+
+
     }
 
 

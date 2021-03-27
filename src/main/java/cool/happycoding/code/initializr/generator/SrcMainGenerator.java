@@ -25,8 +25,8 @@ public class SrcMainGenerator implements Generator{
         // resources 文件生成
         new BaseGenerator(generationConfig, APPLICATION_FILE).generator();
         // 生成
-//        if (ObjectUtil.isNotNull(generationConfig.getHappyCodeForm().getDatabase())){
-//            new MybatisGenerator(generationConfig).generator();
-//        }
+        if (ObjectUtil.isNotNull(generationConfig.getHappyCodeForm().getDatabase())){
+            new MybatisGenerator(generationConfig).generator();
+        }
     }
 }

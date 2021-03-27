@@ -91,7 +91,7 @@ public class ${table.controllerName} {
     @ApiOperation(value = "分页搜索${table.comment}", notes = "根据条件分页查询${table.comment}信息")
     @PostMapping(value = "/page")
     public PageResult<${entity}Dto> page(@RequestBody ${entity}QryPageForm ${entity?uncap_first}QryPageForm) {
-    IPage<${entity}Dto> page = ${table.serviceImplName?uncap_first}.page(${entity?uncap_first}QryPageForm);
+        IPage<${entity}Dto> page = ${table.serviceImplName?uncap_first}.page(${entity?uncap_first}QryPageForm);
         return PageResult.success(page.getCurrent(), page.getPages(), page.getTotal(), page.getRecords());
     }
 
