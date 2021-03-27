@@ -2,8 +2,15 @@ package cool.happycoding.code.initializr.rest;
 
 import cn.hutool.core.io.FileUtil;
 import cn.hutool.core.io.IoUtil;
+import com.baomidou.mybatisplus.generator.config.DataSourceConfig;
+import com.baomidou.mybatisplus.generator.config.builder.ConfigBuilder;
+import com.baomidou.mybatisplus.generator.config.po.TableInfo;
 import cool.happycoding.code.base.exception.BizException;
+import cool.happycoding.code.base.result.ListResult;
+import cool.happycoding.code.initializr.dto.TableDto;
+import cool.happycoding.code.initializr.dto.form.Database;
 import cool.happycoding.code.initializr.dto.form.HappyCodeForm;
+import cool.happycoding.code.initializr.generator.Config;
 import cool.happycoding.code.initializr.generator.GeneratorHandler;
 import freemarker.template.Configuration;
 import lombok.RequiredArgsConstructor;
@@ -14,6 +21,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @ClassName HappyCodeGeneratorController
@@ -52,6 +61,26 @@ public class HappyCodeGeneratorController {
             // 删除文件
             FileUtil.del(zipFile);
         }
+    }
+
+    /**
+     * 获取数据库的库表信息
+     * @return
+     */
+    @PostMapping("tables")
+    public ListResult<TableDto> tables(@RequestBody Database database){
+        List<TableInfo> tableInfos = new ConfigBuilder(null,
+                        new DataSourceConfig().setUrl(database.mysqlConn())
+                        .setDriverName(Config.MYSQL_DRIVER)
+                        .setUsername(database.getUsername())
+                        .setPassword(database.getPassword()),
+                        null,null, null).getTableInfoList();
+        List<TableDto> tableDtos = tableInfos
+                .stream()
+                .map(tableInfo -> new TableDto(tableInfo.getName(), tableInfo.getComment()))
+                .sorted()
+                .collect(Collectors.toList());
+        return ListResult.success(tableDtos);
     }
 
 }

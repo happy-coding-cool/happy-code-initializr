@@ -18,6 +18,12 @@ import static cool.happycoding.code.initializr.utils.GenerateUtils.ifNotExistsTh
  */
 public class GeneratorHandler {
 
+    /**
+     * 生成工程的zip包
+     * @param configuration
+     * @param happyCodeForm
+     * @return
+     */
     public static File generator(Configuration configuration, HappyCodeForm happyCodeForm){
         File file = ifNotExistsThenCreate(happyCodeForm.getProjectMetadata().getArtifact());
         GenerationConfig generationConfig
@@ -43,4 +49,5 @@ public class GeneratorHandler {
         FileUtil.del(file);
         return zipFile;
     }
+
 }

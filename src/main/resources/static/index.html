@@ -66,21 +66,21 @@
                         <label class="title">tablePrefix <el-tooltip class="item" effect="light" content="多个前缀逗号分割" placement="right-start">
                             <i class="el-icon-question"></i>
                         </el-tooltip></label><el-input v-model="happyCodeForm.database.tablePrefix"></el-input>
-                        <el-button icon="el-icon-thumb" class= "search-db-table" @click="table = true" type="info" plain>
+                        <el-button icon="el-icon-thumb" class= "search-db-table" @click="listTables" type="info" plain>
                             选择表信息
                         </el-button>
                     </el-collapse-item>
                 </el-collapse>
             </el-form-item>
             <el-drawer
-                    title="库表信息"
+                    title="选择库表信息"
                     :visible.sync="table"
                     :direction="direction"
                     size=35%>
                 <template>
                     <el-table
                             ref="multipleTable"
-                            :data="dbTableDatas"
+                            :data="tableData"
                             style="width: 100%">
                         <el-table-column
                                 type="selection"
@@ -88,11 +88,11 @@
                         </el-table-column>
                         <el-table-column
                                 label="表名"
-                                prop="tableName">
+                                prop="name">
                         </el-table-column>
                         <el-table-column
                                 label="描述"
-                                prop="tableDesc">
+                                prop="comment">
                         </el-table-column>
                     </el-table>
                 </template>

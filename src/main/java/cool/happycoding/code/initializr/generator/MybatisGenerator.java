@@ -5,6 +5,8 @@ import com.baomidou.mybatisplus.generator.config.DataSourceConfig;
 import com.baomidou.mybatisplus.generator.config.GlobalConfig;
 import com.baomidou.mybatisplus.generator.config.PackageConfig;
 import com.baomidou.mybatisplus.generator.config.StrategyConfig;
+import com.baomidou.mybatisplus.generator.config.builder.ConfigBuilder;
+import com.baomidou.mybatisplus.generator.config.po.TableInfo;
 import com.baomidou.mybatisplus.generator.config.rules.DateType;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 import cool.happycoding.code.initializr.dto.form.Author;
@@ -14,6 +16,8 @@ import cool.happycoding.code.initializr.dto.form.ProjectMetadata;
 import cool.happycoding.code.initializr.mybatis.HappyFreemarkerTemplateEngine;
 import cool.happycoding.code.initializr.mybatis.HappyInjectionConfig;
 import cool.happycoding.code.initializr.mybatis.HappyTemplateConfig;
+
+import java.util.List;
 
 /**
  * <p>MybatisGenerator.java</P>
@@ -106,4 +110,6 @@ public class MybatisGenerator implements Generator{
     public void generator() {
         autoGenerator.execute();
     }
+
+
 }

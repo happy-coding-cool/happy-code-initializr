@@ -4,7 +4,7 @@ var app = new Vue({
         activeProject: "1",
         table: false,
         direction: 'rtl',
-        dbTableDatas:[{
+        tableData:[{
             tableName: 'h_user',
             tableDesc: '用户表'
           }, {
@@ -45,14 +45,28 @@ var app = new Vue({
     methods:{
 
          listTables: function(){
-
+            let that = this;
+            this.table = true;
+            axios.post('./happy-code/tables',
+                this.happyCodeForm.database
+            ).then(function(response) {
+                if (response.data.resultCode === "0") {
+                    that.tableData = response.data.data;
+                }else{
+                    that.errorNotify(response.data.resultCode, response.data.resultMessage);
+                    that.tableData = []
+                }
+                console.log("options: ", that.options);
+            }).catch(function(err) {
+                console.log(err);
+            })
          },
 
          startZip: function(){
             let that = this;
             this.downZipFile(this.happyCodeForm).then(function(response) {
                  if (response.data && response.data.resultCode
-                        && response.data.resultCode !== "0000") {
+                        && response.data.resultCode !== "0") {
                      that.errorNotify(response.resultCode, response.resultMessage);
                  } else {
                      const {data, headers} = response;
