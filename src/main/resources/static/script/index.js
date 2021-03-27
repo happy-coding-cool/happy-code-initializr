@@ -37,7 +37,7 @@ var app = new Vue({
                   port: "3306",
                   username: "root",
                   password: "123456",
-                  schema: "happy-demo",
+                  schema: "happy_admin",
                   tablePrefix: "h_",
                   tables:[]
               }
