@@ -71,7 +71,8 @@ public class ${table.controllerName} {
 
     @ApiOperation(value = "修改${table.comment}", notes = "修改指定${table.comment}信息")
     @PutMapping(value = "/{id}")
-    public BaseResult<Boolean> update(@PathVariable String id, @RequestBody ${entity}UpdateForm ${entity?uncap_first}UpdateForm) {
+    public BaseResult<Boolean> update(@PathVariable String id,
+            @RequestBody ${entity}UpdateForm ${entity?uncap_first}UpdateForm) {
        ${entity?uncap_first}UpdateForm.setId(id);
        return BaseResult.success(${table.serviceImplName?uncap_first}.update(${entity?uncap_first}UpdateForm));
     }

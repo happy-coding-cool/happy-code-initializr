@@ -194,3 +194,43 @@ body{
     color: #b7e7dd;
     border-color: #b7e7dd;
 }
+
+.preview-dialog{
+
+}
+
+.preview-left{
+    float: left;
+    width: 30%;
+    height: 600px;
+    font-size: 13px;
+    overflow: auto;
+    border-right: 1px solid #e4e4e4;
+}
+
+.preview-right{
+    float: right;
+    width: 69%;
+    font-size: 13px;
+    border-right: 1px solid #e4e4e4;
+}
+.preview-right textarea{
+    height: 100%;
+}
+.el-dialog{
+    border-radius: 0;
+}
+.el-dialog__body{
+    padding-top: 30px;
+    overflow: hidden;
+}
+
+.CodeMirror {
+    height: auto;
+    border: 1px solid #eee;
+}
+.preview-content{
+    display: block;
+    height: 600px;
+    overflow: auto;
+}

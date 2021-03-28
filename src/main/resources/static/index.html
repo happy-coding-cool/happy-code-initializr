@@ -7,6 +7,8 @@
     <meta name="description" content="Happy Code, Happy Coding, Happy Coding Initializr, Spring Boot, Spring Cloud, Spring Cloud Alibaba">
     <title>Happy Coding Initializr</title>
     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <link rel="stylesheet" href="./script/codemirror/lib/codemirror.css">
+    <link rel="stylesheet" href="./script/codemirror/theme/3024-day.css">
     <link rel="stylesheet" href="./style/index.css">
     <link rel="icon" href="./images/favicon.ico">
 </head>
@@ -99,16 +101,46 @@
                 </template>
             </el-drawer>
         </el-form>
+
+        <el-dialog
+            :visible.sync="dialogVisible"
+            class="preview-dialog"
+            width="70%">
+            <div class="tree-container preview-left">
+                <el-tree
+                    :data="filesTree"
+                    node-key="label"
+                    :default-expanded-keys = "defaultExpandedKeys"
+                    @node-expand="handleNodeExpand"
+                    @node-click="getFilesDetails"
+                    height="500px"
+                    ref="tree">
+                </el-tree>
+            </div>
+            <div class="preview-right">
+                <textarea ref="textarea"> </textarea>
+                <div class="preview-content" ref="previewMd"> </div>
+            </div>
+        </el-dialog>
+
         <el-footer>
             <div class="footer-copyright">© 2020-2021 happycoding.cool<br>happycoding is powered by<br><span><a href="http://www.happycoding.cool" target="_blank">happycoding.cool</a></span></div>
-            <div class="footer-download"><el-button @click="startZip" type="primary"  plain>获取代码<span class="desktop-only">- ⌘ + ⏎</span></el-button><el-button type="info" plain>预览代码<span class="desktop-only">- Ctrl + Space</span></el-button></div>
+            <div class="footer-download"><el-button @click="startZip" type="primary"  plain>获取代码<span class="desktop-only">- ⌘ + ⏎</span></el-button><el-button type="info" @click="preview" plain>预览代码<span class="desktop-only">- Ctrl + Space</span></el-button></div>
         </el-footer>
     </el-container>
 </div>
 </body>
 <!-- import Vue before Element -->
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script src="script/codemirror/lib/codemirror.js"></script>
+<script src="script/codemirror/mode/clike/clike.js"></script>
+<script src="script/codemirror/mode/xml/xml.js"></script>
+<script src="script/codemirror/mode/markdown/markdown.js"></script>
+<script src="script/codemirror/mode/yaml/yaml.js"></script>
+<script src="script/codemirror/mode/shell/shell.js"></script>
+<script src="script/jszip.min.js"></script>
 <script src="script/index.js"></script>
 </html>
