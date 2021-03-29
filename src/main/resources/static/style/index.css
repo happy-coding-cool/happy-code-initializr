@@ -217,11 +217,15 @@ body{
 .preview-right textarea{
     height: 100%;
 }
+
 .el-dialog{
     border-radius: 0;
 }
+
 .el-dialog__body{
-    padding-top: 30px;
+    margin-top: 15px;
+    padding: 0 5px;
+    border-top: 1px solid #e4e4e4;
     overflow: hidden;
 }
 
@@ -233,4 +237,9 @@ body{
     display: block;
     height: 600px;
     overflow: auto;
+}
+
+.tree-node-disable {
+    color: #d5d5d5;
+    cursor: not-allowed;
 }

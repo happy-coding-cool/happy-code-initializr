@@ -132,7 +132,7 @@ var app = new Vue({
                  label: root,
                  children: []
              })
-             const zipFileKeys = dirKeys.sort((a, b) => a.split('/').length - b.split('/').length)
+             const zipFileKeys = dirKeys.sort((a,b) => a.localeCompare(b))
              zipFileKeys.map((key, index) => {
                  const dirKeys = key.split('/')
                  let prevPath = dirKeys[0] + '/' + dirKeys[1]
@@ -162,8 +162,13 @@ var app = new Vue({
              this.currentFile = data
              let that = this
              if (!data.isFolder) {
-                var fileType = data.label.substring(data.label.lastIndexOf(".")+1, data.label.length);
-                console.log("fileName: " + data.label+"; fileType: "+fileType)
+                 console.log("label:"+data.label)
+                 var fileType = data.label.substring(data.label.lastIndexOf(".")+1, data.label.length);
+                 if(fileType == "cmd" || fileType == "bat" || fileType == "jar"
+                    || data.label == "mvnw" || data.label == "gradlew"
+                    ){
+                     return
+                  }
                  this.newZipFiles[data.path].async('string').then(content => {
                      that.fileDetails = content
                      var modeType = 'text/x-java'
@@ -174,6 +179,7 @@ var app = new Vue({
                      }else if(fileType === 'yml'){
                         modeType = 'yaml'
                      }
+
                      if(modeType === 'markdown'){
                          if (that.editor){
                              that.editor.setValue("")
@@ -202,7 +208,6 @@ var app = new Vue({
                               this.$refs.previewMd.style.display = "none"
                            }
                          }
-
                  })
              }
          },
@@ -220,6 +225,7 @@ var app = new Vue({
                         continue;
                     }
                     if (keys.length === baseLength + 1) {
+                        console.log("label:"+keys[baseLength])
                         children.push({
                             isFolder: false,
                             path: currentPath + '/' + keys[baseLength],
@@ -264,6 +270,8 @@ var app = new Vue({
              dom.parentNode.removeChild(dom);
              window.URL.revokeObjectURL(url);
          }
+
+
     }
 
 

@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Happy Code, Happy Coding, Happy Coding Initializr, Spring Boot, Spring Cloud, Spring Cloud Alibaba">
+    <base target="_blank" />
     <title>Happy Coding Initializr</title>
     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
     <link rel="stylesheet" href="./script/codemirror/lib/codemirror.css">
@@ -113,8 +114,19 @@
                     :default-expanded-keys = "defaultExpandedKeys"
                     @node-expand="handleNodeExpand"
                     @node-click="getFilesDetails"
-                    height="500px"
                     ref="tree">
+                    <span v-if="data.label == 'mvnw'
+                                || data.label == 'mvnw.cmd'
+                                || data.label == 'maven-wrapper.jar'
+                                || data.label == 'gradle-wrapper.jar'
+                                || data.label == 'gradlew.bat'
+                                || data.label == 'gradlew'"
+                          class="tree-node-disable" slot-scope="{node, data }">
+                      {{ node.label }}
+                    </span>
+                    <span v-else slot-scope="{node, data }">
+                      {{ node.label }}
+                    </span>
                 </el-tree>
             </div>
             <div class="preview-right">

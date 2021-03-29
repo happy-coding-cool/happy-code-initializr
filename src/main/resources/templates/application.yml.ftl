@@ -1,6 +1,14 @@
 # 端口
 server:
   port: 8080
+<#if enableMybatisPlus>
+spring:
+  datasource:
+    url: jdbc:mysql://${database.host}:${database.port}/${database.schema}?serverTimezone=Asia/Shanghai&characterEncoding=utf8&useSSL=false&zeroDateTimeBehavior=convertToNull
+    username: ${database.username}
+    password: ${database.password}
+</#if>
+
 happy:
   boot:
     swagger:

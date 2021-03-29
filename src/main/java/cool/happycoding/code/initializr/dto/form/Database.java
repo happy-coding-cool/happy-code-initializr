@@ -28,6 +28,7 @@ public class Database extends Form {
 
     private String tablePrefix;
 
+
     /**
      * 生成mysql 连接 url
      * @return

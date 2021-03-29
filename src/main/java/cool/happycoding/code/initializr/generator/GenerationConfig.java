@@ -1,6 +1,8 @@
 package cool.happycoding.code.initializr.generator;
 
+import cn.hutool.core.util.ObjectUtil;
 import cn.hutool.core.util.StrUtil;
+import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import cool.happycoding.code.base.util.DateUtils;
 import cool.happycoding.code.initializr.dto.form.Dependency;
@@ -59,6 +61,12 @@ public class GenerationConfig implements Config{
         paramMap.put("happyCodeVersion", happyCodeForm.getHappyCodeVersion());
         paramMap.put("projectMetadata", happyCodeForm.getProjectMetadata());
         paramMap.put("artifactToCamelCase", upperFirst(toCamelCase(StrUtil.replaceChars(happyCodeForm.getProjectMetadata().getArtifact(), "-","_"))));
+        if (ObjectUtil.isNotNull(happyCodeForm.getDatabase())){
+            paramMap.put("database", happyCodeForm.getDatabase());
+            Dependency dependency = new Dependency();
+            dependency.setDependency("enableMybatisPlus");
+            happyCodeForm.setDependencies(Lists.newArrayList(dependency));
+        }
         // 依赖校验
         paramMap.putAll(
                 Dependencies.checkEnable(
