@@ -11,6 +11,14 @@
     *zoom: 1;
 }
 
+.icon {
+    width: 1em;
+    height: 1em;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
+}
+
 body{
     margin: 0;
     padding: 0;
@@ -195,8 +203,9 @@ body{
     border-color: #b7e7dd;
 }
 
-.preview-dialog{
-
+.preview-dialog .el-dialog{
+    margin-top: 5vh!important;;
+    width: 80%!important;;
 }
 
 .preview-left{

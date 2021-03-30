@@ -1,0 +1,72 @@
+{
+  "id": "",
+  "name": "",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "1677602",
+      "name": "文件夹",
+      "font_class": "wenjianjia",
+      "unicode": "e603",
+      "unicode_decimal": 58883
+    },
+    {
+      "icon_id": "4249768",
+      "name": "文件夹",
+      "font_class": "wenjianjia1",
+      "unicode": "e667",
+      "unicode_decimal": 58983
+    },
+    {
+      "icon_id": "12095308",
+      "name": "文件夹",
+      "font_class": "wenjianjia2",
+      "unicode": "e65c",
+      "unicode_decimal": 58972
+    },
+    {
+      "icon_id": "12184893",
+      "name": "文件",
+      "font_class": "wenjian",
+      "unicode": "e689",
+      "unicode_decimal": 59017
+    },
+    {
+      "icon_id": "13643982",
+      "name": "文件夹",
+      "font_class": "wenjianjia3",
+      "unicode": "e60d",
+      "unicode_decimal": 58893
+    },
+    {
+      "icon_id": "14666074",
+      "name": "文件",
+      "font_class": "wenjian1",
+      "unicode": "e72c",
+      "unicode_decimal": 59180
+    },
+    {
+      "icon_id": "15055348",
+      "name": "文件夹",
+      "font_class": "wenjianjia4",
+      "unicode": "e677",
+      "unicode_decimal": 58999
+    },
+    {
+      "icon_id": "15489617",
+      "name": "文件夹",
+      "font_class": "wenjianjia5",
+      "unicode": "e6ea",
+      "unicode_decimal": 59114
+    },
+    {
+      "icon_id": "19644769",
+      "name": "文件夹",
+      "font_class": "wenjianjia6",
+      "unicode": "e660",
+      "unicode_decimal": 58976
+    }
+  ]
+}
