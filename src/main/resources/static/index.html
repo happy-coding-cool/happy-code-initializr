@@ -104,9 +104,10 @@
         </el-form>
 
         <el-dialog
-            :visible.sync="dialogVisible"
-            class="preview-dialog"
-            width="80%">
+                :title="happyCodeForm.projectMetadata.artifact"
+                :visible.sync="dialogVisible"
+                class="preview-dialog"
+                width="70%">
             <div class="tree-container preview-left">
                 <el-tree
                     :data="filesTree"

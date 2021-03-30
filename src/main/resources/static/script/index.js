@@ -162,7 +162,6 @@ var app = new Vue({
              this.currentFile = data
              let that = this
              if (!data.isFolder) {
-                 console.log("label:"+data.label)
                  var fileType = data.label.substring(data.label.lastIndexOf(".")+1, data.label.length);
                  if(fileType == "cmd" || fileType == "bat" || fileType == "jar"
                     || data.label == "mvnw" || data.label == "gradlew"
@@ -215,7 +214,8 @@ var app = new Vue({
             if (data.isFolder) {
                 const currentPath = data.path
                 const dirKeys = Object.keys(this.newZipFiles)
-                const targetFileKeys = dirKeys.filter(v => v.startsWith(currentPath))
+                const sortKeys = dirKeys.sort((a,b) => a.localeCompare(b))
+                const targetFileKeys = sortKeys.filter(v => v.startsWith(currentPath))
                 const children = []
                 const baseLength = currentPath.split('/').length
                 for (let i = 0; i < targetFileKeys.length; i++) {
@@ -225,7 +225,6 @@ var app = new Vue({
                         continue;
                     }
                     if (keys.length === baseLength + 1) {
-                        console.log("label:"+keys[baseLength])
                         children.push({
                             isFolder: false,
                             path: currentPath + '/' + keys[baseLength],
