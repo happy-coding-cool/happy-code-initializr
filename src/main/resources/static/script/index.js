@@ -37,8 +37,8 @@ var app = new Vue({
                   javaVersion: "1.8"
               },
               author:{
-                  name: "lanlanhappy",
-                  email: "lanlanhappy@aliyun.com"
+                  name: "happycoding",
+                  email: "happycoding@aliyun.com"
               },
               database:{
                   host: "localhost",
