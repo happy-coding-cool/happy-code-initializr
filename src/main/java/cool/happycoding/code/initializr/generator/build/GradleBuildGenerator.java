@@ -31,16 +31,17 @@ public class GradleBuildGenerator extends AbstractBuildGenerator {
     public void generator() {
 
         // 复制 file目录下的文件到目标目录
-        String gradlewPath = "file:file/gradle/gradlew";
-        String gradlewCmdPath = "file:file/gradle/gradlew.bat";
-        String wrapperPath = "file:file/gradle/wrapper.zip";
+        String gradlewPath = "/file/gradle/gradlew";
+        String gradlewCmdPath = "/file/gradle/gradlew.bat";
+        String wrapperPath = "/file/gradle/wrapper.zip";
 
         // 复制 gradlew gradlew.bat 文件
         copy(gradlewPath, generationConfig.getZipFilePath()+"/gradlew");
         copy(gradlewCmdPath, generationConfig.getZipFilePath()+"/gradlew.bat");
+
         // 生成.gradle 文件夹 复制 wrapper文件的内容
-        ZipUtil.unzip(new ZipInputStream(ResourceUtil.getStream(wrapperPath)),
-                new File(generationConfig.getZipFilePath()+"/.gradle/"));
+        File gradle = ifNotExistsThenCreate(generationConfig.getZipFilePath()+"/.gradle/");
+        ZipUtil.unzip(new ZipInputStream(GradleBuildGenerator.class.getResourceAsStream(wrapperPath)),gradle);
         // 生成build.gradle/settings.gradle文件
         new BaseGenerator(generationConfig, BUILD_GRADLE_FILE).generator();
         new BaseGenerator(generationConfig, SETTINGS_GRADLE_FILE).generator();
