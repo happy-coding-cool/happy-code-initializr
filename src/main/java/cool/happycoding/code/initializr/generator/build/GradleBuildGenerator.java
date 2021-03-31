@@ -1,6 +1,5 @@
 package cool.happycoding.code.initializr.generator.build;
 
-import cn.hutool.core.io.resource.ResourceUtil;
 import cn.hutool.core.util.ZipUtil;
 import cool.happycoding.code.initializr.generator.BaseGenerator;
 import cool.happycoding.code.initializr.generator.GenerationConfig;
