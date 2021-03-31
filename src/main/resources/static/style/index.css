@@ -12,6 +12,7 @@
 body{
     margin: 0;
     padding: 0;
+    color: #222222;
     font-family: 'Operator Mono', 'Source Code Pro', Menlo, Monaco, Consolas, Courier New, monospace;
     background:linear-gradient(to right, #b7e7dd 10px, #f7f7f7 4px 330px, #fff 316px);
 }
@@ -249,7 +250,7 @@ body{
 }
 
 .tree-node-disable {
-    color: #d5d5d5;
+    color: #d5d5d5!important;
     cursor: not-allowed;
 }
 

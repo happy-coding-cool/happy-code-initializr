@@ -1,16 +1,16 @@
 package cool.happycoding.code.initializr.generator.build;
 
-import cn.hutool.core.io.FileUtil;
-import cn.hutool.core.util.StrUtil;
+import cn.hutool.core.io.resource.ResourceUtil;
+import cn.hutool.core.util.ZipUtil;
 import cool.happycoding.code.initializr.generator.BaseGenerator;
 import cool.happycoding.code.initializr.generator.GenerationConfig;
-import cool.happycoding.code.initializr.generator.Generator;
 import lombok.SneakyThrows;
-import org.springframework.util.ResourceUtils;
 
 import java.io.File;
+import java.util.zip.ZipInputStream;
 
-import static cool.happycoding.code.initializr.generator.GeneratorPath.GenerateFile.*;
+import static cool.happycoding.code.initializr.generator.GeneratorPath.GenerateFile.BUILD_GRADLE_FILE;
+import static cool.happycoding.code.initializr.generator.GeneratorPath.GenerateFile.SETTINGS_GRADLE_FILE;
 
 /**
  * @ClassName GradleBuildGenerator
@@ -18,7 +18,7 @@ import static cool.happycoding.code.initializr.generator.GeneratorPath.GenerateF
  * @Author lanlanhappy
  * @Date 2020/12/31 9:15 上午
  */
-public class GradleBuildGenerator implements Generator {
+public class GradleBuildGenerator extends AbstractBuildGenerator {
 
     private final GenerationConfig generationConfig;
 
@@ -29,17 +29,18 @@ public class GradleBuildGenerator implements Generator {
     @SneakyThrows
     @Override
     public void generator() {
+
         // 复制 file目录下的文件到目标目录
-        String gradlewPath = "classpath:file/gradle/gradlew";
-        String gradlewCmdPath = "classpath:file/gradle/gradlew.bat";
-        String gradleWrapperPath = "classpath:file/gradle/wrapper";
+        String gradlewPath = "file:file/gradle/gradlew";
+        String gradlewCmdPath = "file:file/gradle/gradlew.bat";
+        String wrapperPath = "file:file/gradle/wrapper.zip";
+
         // 复制 gradlew gradlew.bat 文件
-        FileUtil.copy(ResourceUtils.getFile(gradlewPath).getAbsolutePath(), generationConfig.getZipFilePath(), true);
-        FileUtil.copy(ResourceUtils.getFile(gradlewCmdPath).getAbsolutePath(), generationConfig.getZipFilePath(), true);
+        copy(gradlewPath, generationConfig.getZipFilePath()+"/gradlew");
+        copy(gradlewCmdPath, generationConfig.getZipFilePath()+"/gradlew.bat");
         // 生成.gradle 文件夹 复制 wrapper文件的内容
-        FileUtil.copyFilesFromDir(ResourceUtils.getFile(gradleWrapperPath),
-                new File(StrUtil.concat(false,
-                        generationConfig.getZipFilePath(),"/.gradle/wrapper")), true);
+        ZipUtil.unzip(new ZipInputStream(ResourceUtil.getStream(wrapperPath)),
+                new File(generationConfig.getZipFilePath()+"/.gradle/"));
         // 生成build.gradle/settings.gradle文件
         new BaseGenerator(generationConfig, BUILD_GRADLE_FILE).generator();
         new BaseGenerator(generationConfig, SETTINGS_GRADLE_FILE).generator();

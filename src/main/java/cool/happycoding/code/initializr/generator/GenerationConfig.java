@@ -7,6 +7,7 @@ import com.google.common.collect.Maps;
 import cool.happycoding.code.base.util.DateUtils;
 import cool.happycoding.code.initializr.dto.form.Dependency;
 import cool.happycoding.code.initializr.dto.form.HappyCodeForm;
+import cool.happycoding.code.initializr.utils.GenerateUtils;
 import freemarker.template.Configuration;
 import lombok.Data;
 
@@ -49,6 +50,11 @@ public class GenerationConfig implements Config{
         return generationConfig;
     }
 
+    public boolean enableDatabase(){
+        return ObjectUtil.isNotNull(happyCodeForm)
+                && GenerateUtils.enableDatabase(happyCodeForm.getDatabase());
+    }
+
     /**
      * freemarker 模板参数
      * @return
@@ -61,7 +67,7 @@ public class GenerationConfig implements Config{
         paramMap.put("happyCodeVersion", happyCodeForm.getHappyCodeVersion());
         paramMap.put("projectMetadata", happyCodeForm.getProjectMetadata());
         paramMap.put("artifactToCamelCase", upperFirst(toCamelCase(StrUtil.replaceChars(happyCodeForm.getProjectMetadata().getArtifact(), "-","_"))));
-        if (ObjectUtil.isNotNull(happyCodeForm.getDatabase())){
+        if (enableDatabase()){
             paramMap.put("database", happyCodeForm.getDatabase());
             Dependency dependency = new Dependency();
             dependency.setDependency("enableMybatisPlus");

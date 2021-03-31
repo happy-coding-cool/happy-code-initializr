@@ -1,6 +1,9 @@
 package cool.happycoding.code.initializr.utils;
 
 import cn.hutool.core.io.FileUtil;
+import cn.hutool.core.util.ObjectUtil;
+import cn.hutool.core.util.StrUtil;
+import cool.happycoding.code.initializr.dto.form.Database;
 
 import java.io.File;
 
@@ -24,5 +27,13 @@ public final class GenerateUtils {
         }
         FileUtil.mkdir(tempFile);
         return tempFile;
+    }
+
+    public static boolean enableDatabase(Database database){
+        return ObjectUtil.isNotNull(database) &&
+                StrUtil.isNotBlank(database.getHost()) &&
+                StrUtil.isNotBlank(database.getPort()) &&
+                StrUtil.isNotBlank(database.getUsername()) &&
+                StrUtil.isNotBlank(database.getSchema());
     }
 }

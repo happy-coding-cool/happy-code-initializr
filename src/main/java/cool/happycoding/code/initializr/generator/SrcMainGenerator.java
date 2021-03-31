@@ -1,7 +1,5 @@
 package cool.happycoding.code.initializr.generator;
 
-import cn.hutool.core.util.ObjectUtil;
-
 import static cool.happycoding.code.initializr.generator.GeneratorPath.GenerateFile.APPLICATION_FILE;
 
 /**
@@ -25,7 +23,7 @@ public class SrcMainGenerator implements Generator{
         // resources 文件生成
         new BaseGenerator(generationConfig, APPLICATION_FILE).generator();
         // 生成
-        if (ObjectUtil.isNotNull(generationConfig.getHappyCodeForm().getDatabase())){
+        if (generationConfig.enableDatabase()){
             new MybatisGenerator(generationConfig).generator();
         }
     }

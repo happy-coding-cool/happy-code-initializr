@@ -1,11 +1,10 @@
 package cool.happycoding.code.initializr;
 
-import cn.hutool.core.util.StrUtil;
+import com.baomidou.mybatisplus.core.toolkit.StringPool;
 import lombok.SneakyThrows;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import java.io.File;
 import java.nio.charset.StandardCharsets;
 
 /**
@@ -23,10 +22,7 @@ public class InitializeConfiguration {
         freemarker.template.Configuration configuration =
                 new freemarker.template.Configuration(freemarker.template.Configuration.DEFAULT_INCOMPATIBLE_IMPROVEMENTS);
         configuration.setDefaultEncoding(StandardCharsets.UTF_8.name());
-        configuration.setDirectoryForTemplateLoading(new File(
-                StrUtil.concat(false,
-                        InitializeConfiguration.class.getResource("/").toURI().getPath())
-        ));
+        configuration.setClassForTemplateLoading(InitializeConfiguration.class, StringPool.SLASH);
         return configuration;
     }
 }
