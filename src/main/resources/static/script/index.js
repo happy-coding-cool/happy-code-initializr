@@ -43,8 +43,8 @@ var app = new Vue({
               database:{
                   host: "localhost",
                   port: "3306",
-                  username: "root",
-                  password: "123456",
+                  username: "scott",
+                  password: "12345678",
                   schema: "happy_demo",
                   tablePrefix: "h_",
                   tables:[]
