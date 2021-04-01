@@ -5,7 +5,11 @@ happy-code 脚手架工具
 - 项目参考了Spring Initializr和Aliyun Java Initializr的实现形式
 - 项目引入了mybatis-plus-generator并做了功能扩展，使其更加符合happy code框架所倡导的工程结构
 
-### 项目截图
+
+### 项目地址
+
+- [文档](http://www.happycoding.cool)
+- [脚手架地址](http://www.happycoding.cool/bootstrap/)
 
 ### 参考连接
 - [Spring Initializr](https://start.spring.io/)
