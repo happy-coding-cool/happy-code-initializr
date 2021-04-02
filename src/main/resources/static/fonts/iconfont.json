@@ -62,11 +62,32 @@
       "unicode_decimal": 59114
     },
     {
+      "icon_id": "15527214",
+      "name": "脚手架",
+      "font_class": "jiaoshoujia",
+      "unicode": "e630",
+      "unicode_decimal": 58928
+    },
+    {
       "icon_id": "19644769",
       "name": "文件夹",
       "font_class": "wenjianjia6",
       "unicode": "e660",
       "unicode_decimal": 58976
+    },
+    {
+      "icon_id": "20014171",
+      "name": "Logo GitHub",
+      "font_class": "huaban881",
+      "unicode": "e501",
+      "unicode_decimal": 58625
+    },
+    {
+      "icon_id": "20296217",
+      "name": "文档",
+      "font_class": "wendang",
+      "unicode": "e622",
+      "unicode_decimal": 58914
     }
   ]
 }
