@@ -27,7 +27,7 @@ var app = new Vue({
           }],
           happyCodeForm:{
               build: "maven",
-              happyCodeVersion: "1.0.1.RELEASE",
+              happyCodeVersion: "1.0.2.RELEASE",
               projectMetadata:{
                   group: "com.example",
                   artifact: "demo",
