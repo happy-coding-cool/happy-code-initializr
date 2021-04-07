@@ -1,5 +1,7 @@
 package ${projectMetadata.proPackage};
-
+<#if enableMybatisPlus>
+import org.mybatis.spring.annotation.MapperScan;
+</#if>
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
