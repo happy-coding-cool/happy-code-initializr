@@ -12,6 +12,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @since ${date}
  */
 @SpringBootApplication
+<#if enableMybatisPlus>
+@MapperScan("${projectMetadata.proPackage}.**.mapper")
+</#if>
 public class ${artifactToCamelCase}Application {
     public static void main(String[] args) {
         SpringApplication.run(${artifactToCamelCase}Application.class, args);
