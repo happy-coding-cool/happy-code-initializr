@@ -43,6 +43,10 @@
             <groupId>cool.happycoding</groupId>
             <artifactId>happy-code-starter-mybatis</artifactId>
         </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
         </#if>
         <#if enableJetCache>
         <dependency>

@@ -39,6 +39,7 @@ dependencies {
     compile("cool.happycoding:happy-code-starter-log")
 <#if enableMybatisPlus>
     compile("cool.happycoding:happy-code-starter-mybatis")
+    compile("mysql:mysql-connector-java")
 </#if>
 <#if enableJetCache>
     compile("cool.happycoding:happy-code-starter-cache")
