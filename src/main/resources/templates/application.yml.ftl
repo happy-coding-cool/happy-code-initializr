@@ -10,7 +10,7 @@ spring:
 </#if>
 
 happy:
-  boot:
+  code:
     swagger:
       <#noparse>group: ${spring.application.name}</#noparse>
       base-package: ${projectMetadata.proPackage}
