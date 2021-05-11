@@ -7,6 +7,7 @@
         <groupId>cool.happycoding</groupId>
         <artifactId>happy-code-parent</artifactId>
         <version>${happyCodeVersion}</version>
+        <relativePath/>
     </parent>
 
     <groupId>${projectMetadata.group}</groupId>
